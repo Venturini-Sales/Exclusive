@@ -20,7 +20,7 @@ export const LogInPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <PageStyle>
-        <PageSection width="60%">
+        <PageSection justifycontent="flex-start" width="60%">
           <img src={IMG} alt="" />
         </PageSection>
 

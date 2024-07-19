@@ -8,13 +8,18 @@ export const PageStyle = styled.section`
   margin-bottom: 20px;
   width: 100%;
 
+  img {
+    width: 100%;
+    height: 100vh;
+  }
+
 `;
 
 export const PageSection = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: ${props => props.justifycontent || 'center'};
     align-items: center;
-    width: ${props => props.width};;
+    width: ${props => props.width};
 `
 
 export const ButtonFormArea = styled.div`

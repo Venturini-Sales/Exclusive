@@ -23,7 +23,6 @@ export const StyledHeader = styled.header`
     text-align: center;
     flex: 1;
     ul {
-      cursor: pointer;
       display: flex;
       gap: 30px;
       justify-content: center;
@@ -33,6 +32,7 @@ export const StyledHeader = styled.header`
       font-size: 16px;
       font-weight: 400;
       list-style: none;
+      cursor: pointer;
     }
   }
 
