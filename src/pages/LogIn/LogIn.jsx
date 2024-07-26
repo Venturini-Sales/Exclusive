@@ -1,6 +1,6 @@
 import IMG from '../../assets/images/Phoneimage.png';
 import FormComponent from '../../components/Form/FormComponent';
-import FormButton from '../../components/FormButton/FormButton';
+import Button from '../../components/Button/Button';
 import { ButtonFormArea, PageSection, PageStyle } from './styles';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -38,7 +38,7 @@ export const LogInPage = () => {
             <TextField id="standard-basic" label="Senha" variant="standard" />
 
             <ButtonFormArea>
-              <FormButton buttonText="Entrar" />
+              <Button buttonText="Entrar" />
               <p>
                 <a href="">Esqueceu sua senha?</a>
               </p>

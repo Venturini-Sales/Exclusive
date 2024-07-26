@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 
-export const StyledFormButton = styled.button`
+export const StyledButton = styled.button`
 
     background-color: #DB4444;
     color: #FAFAFA;
@@ -12,8 +12,7 @@ export const StyledFormButton = styled.button`
     border: none;
     padding: 16px 122px 16px 122px;
     border-radius: 4px;
-    cursor: pointer;
-    
+    cursor: pointer;    
 
     &:hover {
         background-color: #CC3F3F;

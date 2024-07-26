@@ -1,4 +1,7 @@
 import SliderAlt from '../../components/SliderAlt/SliderAlt';
+import SliderMain from '../../components/SliderMain/SliderMain';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import {
   ListElementStyle,
   ListStyle,
@@ -46,6 +49,21 @@ export const HomePage = () => {
               <img src={IMG} />
             </SlideStyle>
           </SliderAlt>
+        </PageSection>
+        <PageSection borderbottom="1px solid #b2b2b2" flexdirection="column">
+          <SectionTitle titleText="Vendas Relampago" subTitleText="Hoje" />
+          <SliderMain>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </SliderMain>
         </PageSection>
       </PageStyle>
     </>

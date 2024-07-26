@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-
-
 export const PageStyle = styled.section`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 200px;
+    gap: 100px;
 `;
 
 export const PageSection = styled.div`
     display: flex;
+    flex-direction:  ${(props) => props.flexdirection || 'row'};
+    border-bottom: ${(props) => props.borderbottom || 'none'} ;
     width: 75vw;
 `
 

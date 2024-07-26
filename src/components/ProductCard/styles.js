@@ -6,7 +6,6 @@ export const StyledCard = styled.div`
     align-items: flex-start;
     gap: 16px;
     position: relative;
-
 `
 
 export const StyledCardImage = styled.div `
@@ -21,7 +20,7 @@ export const StyledSaleInfo = styled.div `
     background-color: #DB4444;
     position: absolute;
     bottom: 88%;
-    left: 0.5%;
+    left: 5%;
 `
 export const StyledCardButtons = styled.div `
     display: flex;
@@ -29,7 +28,7 @@ export const StyledCardButtons = styled.div `
     flex-direction: column;
     position: absolute;
     bottom: 77%;
-    left: 21%;
+    left: 67%;
 `
 export const StyledCardButton = styled.div `
     display: flex;
