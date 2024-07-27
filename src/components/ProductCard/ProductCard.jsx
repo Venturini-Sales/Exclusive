@@ -11,7 +11,9 @@ import {
 } from './styles';
 import IMG from '../../assets/images/Productframe.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faHeart, faStar } from '@fortawesome/free-regular-svg-icons';
+import { faEye, faHeart, faStar } from '@fortawesome/free-solid-svg-icons';
+import RatingStars from '../RatingStars/RatingStars';
+import { useEffect, useState } from 'react';
 
 const ProductCard = ({
   discount,
@@ -40,14 +42,8 @@ const ProductCard = ({
           <p>{price}</p>
           <p>{promoPrice}</p>
         </StyledPriceArea>
-        <StyledRatingArea>
-          <StyledStarsRating>
-            <FontAwesomeIcon icon={faStar} style={{ color: '#FFD43B' }} />
-            <FontAwesomeIcon icon={faStar} style={{ color: '#FFD43B' }} />
-            <FontAwesomeIcon icon={faStar} style={{ color: '#FFD43B' }} />
-            <FontAwesomeIcon icon={faStar} style={{ color: '#FFD43B' }} />
-            <FontAwesomeIcon icon={faStar} style={{ color: '#FFD43B' }} />
-          </StyledStarsRating>
+        <StyledRatingArea style={{ display: 'flex', alignItems: 'center' }}>
+          <RatingStars maxStars={5} />
           <p>{ratingCount}</p>
         </StyledRatingArea>
       </StyledCardInfo>
