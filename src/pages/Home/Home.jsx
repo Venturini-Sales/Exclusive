@@ -10,6 +10,8 @@ import {
   SlideStyle,
 } from './styles';
 import IMG from '../../assets/images/Frame.png';
+import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
   const dataSections = [
@@ -23,6 +25,12 @@ export const HomePage = () => {
     'Saúde e Beleza',
   ];
 
+  const ProductsToList = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  const RandomRatingStars = (max) => {
+    return Math.floor(Math.random() * max);
+  };
+  const navigate = useNavigate();
   return (
     <>
       <PageStyle>
@@ -53,18 +61,16 @@ export const HomePage = () => {
         <PageSection borderbottom="1px solid #b2b2b2" flexdirection="column">
           <SectionTitle titleText="Vendas Relampago" subTitleText="Hoje" />
           <SliderMain>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {ProductsToList.map((value, index) => (
+              <div key={index}>
+                <ProductCard ratingCount={RandomRatingStars(100)} />
+              </div>
+            ))}
           </SliderMain>
         </PageSection>
+        <div style={{ width: '75vw' }}>
+          <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
+        </div>
       </PageStyle>
     </>
   );

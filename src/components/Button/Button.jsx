@@ -1,7 +1,7 @@
 import { StyledButton } from './styles';
 
-function Button({ buttonText }) {
-  return <StyledButton>{buttonText}</StyledButton>;
+function Button({ buttonText, onClick }) {
+  return <StyledButton onClick={onClick}>{buttonText}</StyledButton>;
 }
 
 export default Button;
