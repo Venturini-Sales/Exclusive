@@ -13,7 +13,6 @@ import IMG from '../../assets/images/Productframe.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faHeart, faStar } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../RatingStars/RatingStars';
-import { useEffect, useState } from 'react';
 
 const ProductCard = ({
   discount,
