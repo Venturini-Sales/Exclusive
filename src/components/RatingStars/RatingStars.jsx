@@ -7,27 +7,28 @@ const RatingStars = ({ maxStars }) => {
     if (maxStars > 5) {
       return;
     }
+
     let starsReceived = Math.floor(Math.random() * maxStars);
 
     const starsFilled = [];
-    for (let i = 0; i < starsReceived; i++) {
+
+    for (let i = 0; i < maxStars; i++) {
       starsFilled.push(
         <div key={i}>
-          <FontAwesomeIcon icon={faStar} style={{ color: '#FFD43B' }} />
+          <FontAwesomeIcon
+            icon={faStar}
+            style={{ color: i < starsReceived ? '#FFD43B' : '#b9b9b9' }}
+          />
         </div>,
       );
     }
-    if (starsFilled.length === 0) {
-      starsFilled.push(
-        <div key={0}>
-          <FontAwesomeIcon icon={faStar} style={{ color: '#FFD43B' }} />
-        </div>,
-      );
-    }
+
     return starsFilled;
   };
   return (
-    <div style={{ display: 'flex' }}>{RandomRatingStarsIcon(maxStars)}</div>
+    <div style={{ display: 'flex', cursor: 'pointer' }}>
+      {RandomRatingStarsIcon(maxStars)}
+    </div>
   );
 };
 
