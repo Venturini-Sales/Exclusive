@@ -7,15 +7,11 @@ import {
   StyledPriceArea,
   StyledRatingArea,
   StyledSaleInfo,
-  StyledStarsRating,
 } from './styles';
 import IMG from '../../assets/images/Productframe.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faHeart, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../RatingStars/RatingStars';
-import { useEffect, useState } from 'react';
-import FlashPromoCounter from '../FlashPromo/FlashPromoCounter';
-
 const ProductCard = ({
   discount,
   productName,
@@ -23,8 +19,6 @@ const ProductCard = ({
   promoPrice,
   ratingCount,
 }) => {
-  
-
   return (
     <StyledCard>
       <StyledCardImage>
@@ -40,7 +34,6 @@ const ProductCard = ({
         </StyledCardButtons>
       </StyledCardImage>
       <StyledCardInfo>
-        <FlashPromoCounter/>
         <p>{productName}</p>
         <StyledPriceArea>
           <p>{price}</p>

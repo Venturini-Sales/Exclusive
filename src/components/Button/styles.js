@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
     font-weight: 500;
     outline: none;
     border: none;
-    padding: 16px 122px 16px 122px;
+    padding: 16px 90px 16px 90px;
     border-radius: 4px;
     cursor: pointer;    
 

@@ -25,4 +25,14 @@ export const SliderWrapper = styled.div`
   .slick-next {
     right: calc(10% - 60px);
   }
-`;
+
+  .slick-list {
+    overflow: visible !important;
+  }
+  .slick-slide {
+    pointer-events: all; /* Permite interação com os slides fora da área visível */
+  }
+
+`
+
+;

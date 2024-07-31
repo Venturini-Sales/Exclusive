@@ -9,6 +9,7 @@ const RatingStars = ({ maxStars }) => {
     }
 
     let starsReceived = Math.floor(Math.random() * maxStars);
+    starsReceived = starsReceived === 0 ? 1 : starsReceived;
 
     const starsFilled = [];
 

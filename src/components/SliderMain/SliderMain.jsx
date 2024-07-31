@@ -18,7 +18,8 @@ const SliderMain = ({ children }) => {
     infinite: false,
     speed: 500,
     slidesToShow: 3.5,
-    slidesToScroll: 1,
+    slidesToScroll: 2.5,
+    swipeToSlide: true,
     nextArrow: <CustomArrow />,
     prevArrow: <CustomArrow />,
   };

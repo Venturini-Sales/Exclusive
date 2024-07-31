@@ -19,8 +19,8 @@ export const StyledSaleInfo = styled.div `
     padding: 4px 12px 4px 12px;
     background-color: #DB4444;
     position: absolute;
-    bottom: 88%;
-    left: 5%;
+    bottom: 90%;
+    left: 15px;
 `
 export const StyledCardButtons = styled.div `
     display: flex;
@@ -28,7 +28,7 @@ export const StyledCardButtons = styled.div `
     flex-direction: column;
     position: absolute;
     bottom: 77%;
-    left: 67%;
+    left: 225px;
 `
 export const StyledCardButton = styled.div `
     display: flex;

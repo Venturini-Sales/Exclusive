@@ -6,12 +6,14 @@ export const PageStyle = styled.section`
     align-items: center;
     margin-bottom: 200px;
     gap: 100px;
+    overflow: hidden;
 `;
 
 export const PageSection = styled.div`
     display: flex;
-    flex-direction:  ${(props) => props.flexdirection || 'row'};
-    border-bottom: ${(props) => props.borderbottom || 'none'} ;
+    flex-direction:  ${(props) => props.flexdirection || 'column'};
+    border-top: ${(props) => props.bordertop || 'none'} ;
+    padding-top:  ${(props) => props.paddingtop || 'none'} ; ;
     width: 75vw;
 `
 
@@ -36,4 +38,35 @@ export const SlideStyle = styled.div`
         width: 100%;
     }
 
+`
+
+export const SectionTitleArea = styled.div`
+
+display: flex;
+align-items: center;
+gap: 50px;
+justify-content: ${(props) => props.justifycontent || 'none'};
+`
+
+export const ButtonArea = styled.div`
+
+display: flex;
+justify-content: center;
+width: 75vw;
+
+`
+
+export const AltCardArea = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px;
+`
+
+export const CardArea = styled.div `
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
 `
