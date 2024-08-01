@@ -27,7 +27,7 @@ export const SliderWrapper = styled.div`
   }
 
   .slick-list {
-    overflow: visible !important;
+    overflow: ${(props) => props.overflow || 'visible'} !important;
   }
   .slick-slide {
     pointer-events: all; /* Permite interação com os slides fora da área visível */

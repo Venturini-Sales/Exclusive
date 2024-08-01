@@ -4,7 +4,7 @@ export const PageStyle = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 200px;
+    margin-bottom: 150px;
     gap: 100px;
     overflow: hidden;
 `;
@@ -12,8 +12,9 @@ export const PageStyle = styled.section`
 export const PageSection = styled.div`
     display: flex;
     flex-direction:  ${(props) => props.flexdirection || 'column'};
+    justify-content:  ${(props) => props.justifycontent || 'none'};
     border-top: ${(props) => props.bordertop || 'none'} ;
-    padding-top:  ${(props) => props.paddingtop || 'none'} ; ;
+    padding-top:  ${(props) => props.paddingtop || '100px'} ; ;
     width: 75vw;
 `
 

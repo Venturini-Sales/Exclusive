@@ -25,7 +25,11 @@ import {
   faHeadphones,
   faGamepad,
   faKeyboard,
+  faTruckFast,
+  faHeadset,
+  faHandHoldingDollar,
 } from '@fortawesome/free-solid-svg-icons';
+import InfoCard from '../../components/InfoCard/InfoCard';
 
 export const HomePage = () => {
   const dataSections = [
@@ -49,7 +53,7 @@ export const HomePage = () => {
   return (
     <>
       <PageStyle>
-        <PageSection flexdirection="row">
+        <PageSection paddingtop="0" flexdirection="row">
           <ListStyle>
             {dataSections.map((value, index) => (
               <ListElementStyle key={index}>{value}</ListElementStyle>
@@ -73,12 +77,12 @@ export const HomePage = () => {
             </SlideStyle>
           </SliderAlt>
         </PageSection>
-        <PageSection>
+        <PageSection paddingtop="0">
           <SectionTitleArea>
             <SectionTitle titleText="Vendas Relampago" subTitleText="Hoje" />
             <FlashPromoCounter />
           </SectionTitleArea>
-          <SliderMain>
+          <SliderMain rowsType="1">
             {ProductsToList.map((value, index) => (
               <div key={index}>
                 <ProductCard ratingCount={RandomRatingStars(100)} />
@@ -89,7 +93,7 @@ export const HomePage = () => {
         <ButtonArea>
           <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
         </ButtonArea>
-        <PageSection paddingtop="100px" bordertop="1px solid #b2b2b2">
+        <PageSection bordertop="1px solid #b2b2b2">
           <SectionTitleArea>
             <SectionTitle
               titleText="Navegar por Categorias"
@@ -108,8 +112,7 @@ export const HomePage = () => {
         <ButtonArea>
           <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
         </ButtonArea>
-
-        <PageSection paddingtop="100px" bordertop="1px solid #b2b2b2">
+        <PageSection bordertop="1px solid #b2b2b2">
           <SectionTitleArea justifycontent="space-between">
             <SectionTitle
               titleText="Produtos mais vendidos"
@@ -127,6 +130,45 @@ export const HomePage = () => {
               </div>
             ))}
           </CardArea>
+        </PageSection>
+        <PageSection bordertop="1px solid #b2b2b2">
+          <SectionTitleArea>
+            <SectionTitle
+              titleText="Conheça Nossos Produtos"
+              subTitleText="Nossos Produtos"
+            />
+          </SectionTitleArea>
+          <SliderMain overflow="hidden" rowsType="2">
+            {ProductsToList.map((value, index) => (
+              <div key={index}>
+                <ProductCard ratingCount={RandomRatingStars(100)} />
+              </div>
+            ))}
+          </SliderMain>
+        </PageSection>
+        <ButtonArea>
+          <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
+        </ButtonArea>
+        <PageSection
+          paddingtop="20px"
+          flexdirection="row"
+          justifycontent="space-between"
+        >
+          <InfoCard
+            iconType={faTruckFast}
+            TitleText="Entrega Rápida e Gratuita"
+            SubTitleText="Entrega gratuita para todos os pedidos acima de $ 140"
+          />
+          <InfoCard
+            iconType={faHeadset}
+            TitleText="Atendimento 24h"
+            SubTitleText="Suporte ao cliente amigável 24 horas por dia"
+          />
+          <InfoCard
+            iconType={faHandHoldingDollar}
+            TitleText="Garantia de Devolução de Dinheiro"
+            SubTitleText="Devolvemos o dinheiro em 30 dias"
+          />
         </PageSection>
       </PageStyle>
     </>

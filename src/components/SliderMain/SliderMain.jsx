@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const SliderMain = ({ children }) => {
+const SliderMain = ({ children, rowsType, overflow }) => {
   const CustomArrow = ({ className, style, onClick }) => (
     <div
       className={className}
@@ -20,12 +20,13 @@ const SliderMain = ({ children }) => {
     slidesToShow: 3.5,
     slidesToScroll: 2.5,
     swipeToSlide: true,
+    rows: rowsType,
     nextArrow: <CustomArrow />,
     prevArrow: <CustomArrow />,
   };
 
   return (
-    <SliderWrapper>
+    <SliderWrapper overflow={overflow}>
       <Slider {...settings}>{children}</Slider>
     </SliderWrapper>
   );
