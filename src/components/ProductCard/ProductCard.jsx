@@ -18,9 +18,10 @@ const ProductCard = ({
   price,
   promoPrice,
   ratingCount,
+  margin,
 }) => {
   return (
-    <StyledCard>
+    <StyledCard margin={margin}>
       <StyledCardImage>
         <img src={IMG} alt="" />
         <StyledSaleInfo>{discount}</StyledSaleInfo>

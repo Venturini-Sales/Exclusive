@@ -10,6 +10,7 @@ export const PageStyle = styled.section`
 `;
 
 export const PageSection = styled.div`
+    position: ${(props) => props.position || 'static'};
     display: flex;
     flex-direction:  ${(props) => props.flexdirection || 'column'};
     justify-content:  ${(props) => props.justifycontent || 'none'};
@@ -61,7 +62,7 @@ export const AltCardArea = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 50px;
+    gap: 40px;
 `
 
 export const CardArea = styled.div `
@@ -70,4 +71,19 @@ export const CardArea = styled.div `
     flex-direction: row;
     justify-content: center;
     gap: 20px;
+`
+
+export const BannerImg = styled.img`
+    width: 100%;
+    cursor: pointer;
+`
+
+export const BannerText = styled.h2`
+    position: absolute;
+    color: #00f361;
+    font-size: 3.5vw;
+    text-align: center;
+    bottom: 30%;
+    left: 5%;
+    cursor: pointer;
 `

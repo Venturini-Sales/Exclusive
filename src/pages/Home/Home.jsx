@@ -6,9 +6,13 @@ import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import FlashPromoCounter from '../../components/FlashPromo/FlashPromoCounter';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import IMG from '../../assets/images/Frame.png';
+import JBLImg from '../../assets/images/JBLbanner.png';
 import Button from '../../components/Button/Button';
+import InfoCard from '../../components/InfoCard/InfoCard';
 import {
   AltCardArea,
+  BannerImg,
+  BannerText,
   ButtonArea,
   CardArea,
   ListElementStyle,
@@ -29,7 +33,6 @@ import {
   faHeadset,
   faHandHoldingDollar,
 } from '@fortawesome/free-solid-svg-icons';
-import InfoCard from '../../components/InfoCard/InfoCard';
 
 export const HomePage = () => {
   const dataSections = [
@@ -44,7 +47,9 @@ export const HomePage = () => {
   ];
 
   const ProductsToList = [1, 2, 3, 4, 5, 6, 7, 8];
-  const ProductsToListAlt = [1, 2, 3, 4];
+  const ProductsToList2 = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+  ];
 
   const RandomRatingStars = (max) => {
     return Math.floor(Math.random() * max);
@@ -112,26 +117,11 @@ export const HomePage = () => {
         <ButtonArea>
           <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
         </ButtonArea>
-        <PageSection bordertop="1px solid #b2b2b2">
-          <SectionTitleArea justifycontent="space-between">
-            <SectionTitle
-              titleText="Produtos mais vendidos"
-              subTitleText="Este mês  "
-            />
-            <Button
-              buttonText={'Ver tudo'}
-              onClick={() => navigate('/login')}
-            />
-          </SectionTitleArea>
-          <CardArea>
-            {ProductsToListAlt.map((value, index) => (
-              <div key={index}>
-                <ProductCard ratingCount={RandomRatingStars(100)} />
-              </div>
-            ))}
-          </CardArea>
+        <PageSection position="relative" paddingtop="0">
+          <BannerImg src={JBLImg} alt="" />
+          <BannerText>Compre agora!</BannerText>
         </PageSection>
-        <PageSection bordertop="1px solid #b2b2b2">
+        <PageSection paddingtop="0">
           <SectionTitleArea>
             <SectionTitle
               titleText="Conheça Nossos Produtos"
@@ -139,9 +129,12 @@ export const HomePage = () => {
             />
           </SectionTitleArea>
           <SliderMain overflow="hidden" rowsType="2">
-            {ProductsToList.map((value, index) => (
+            {ProductsToList2.map((value, index) => (
               <div key={index}>
-                <ProductCard ratingCount={RandomRatingStars(100)} />
+                <ProductCard
+                  margin="25px"
+                  ratingCount={RandomRatingStars(100)}
+                />
               </div>
             ))}
           </SliderMain>

@@ -6,6 +6,7 @@ export const StyledCard = styled.div`
     align-items: flex-start;
     gap: 16px;
     position: relative;
+    margin-bottom: ${(props) => props.margin || '0'};
 `
 
 export const StyledCardImage = styled.div `
@@ -13,7 +14,7 @@ export const StyledCardImage = styled.div `
 
 export const StyledSaleInfo = styled.div `
     text-align: center;
-    font-size: 12px ;
+    font-size: 12px;
     color: #FAFAFA;
     border-radius: 4px;
     padding: 4px 12px 4px 12px;

@@ -19,11 +19,11 @@ export const SliderWrapper = styled.div`
   }  
 
   .slick-prev {
-    left: calc(95% - 60px);
+    left: 65vw;
   }
 
   .slick-next {
-    right: calc(10% - 60px);
+    right: 3vw;
   }
 
   .slick-list {

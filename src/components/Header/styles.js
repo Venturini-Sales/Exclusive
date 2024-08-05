@@ -51,7 +51,7 @@ export const StyledInput = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
-  gap: 5px;
+  gap: 15px;
   border-radius: 5px;
 
   input {
