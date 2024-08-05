@@ -11,8 +11,10 @@ import Button from '../../components/Button/Button';
 import InfoCard from '../../components/InfoCard/InfoCard';
 import {
   AltCardArea,
+  BannerCategory,
   BannerImg,
   BannerText,
+  BannerTitle,
   ButtonArea,
   CardArea,
   ListElementStyle,
@@ -119,6 +121,8 @@ export const HomePage = () => {
         </ButtonArea>
         <PageSection position="relative" paddingtop="0">
           <BannerImg src={JBLImg} alt="" />
+          <BannerCategory>Categorias</BannerCategory>
+          <BannerTitle>Aprimore Sua Experiência Musical</BannerTitle>
           <BannerText>Compre agora!</BannerText>
         </PageSection>
         <PageSection paddingtop="0">

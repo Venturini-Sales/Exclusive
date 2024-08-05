@@ -78,12 +78,34 @@ export const BannerImg = styled.img`
     cursor: pointer;
 `
 
+export const BannerCategory = styled.h3`
+    position: absolute;
+    font-size: 1.2vw;
+    color: #00f361;
+    cursor: pointer;
+    left: 3%;
+    top: 17%;
+
+`
+
+export const BannerTitle = styled.h1`
+
+    position: absolute;
+    font-size: 3vw;
+    color: #ffffff;
+    cursor: pointer;
+    line-height: 1.3;
+    width: 50%;
+    top: 30%;
+    left: 3%;
+`
+
 export const BannerText = styled.h2`
     position: absolute;
     color: #00f361;
-    font-size: 3.5vw;
+    font-size: 4vw;
     text-align: center;
-    bottom: 30%;
-    left: 5%;
+    bottom: 20%;
+    left: 3%;
     cursor: pointer;
 `
