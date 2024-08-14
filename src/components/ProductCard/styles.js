@@ -10,6 +10,13 @@ export const StyledCard = styled.div`
 `
 
 export const StyledCardImage = styled.div `
+
+    img{
+        width: 270px;
+        height: 250px;
+        background-color: black;
+    }
+
 `
 
 export const StyledSaleInfo = styled.div `

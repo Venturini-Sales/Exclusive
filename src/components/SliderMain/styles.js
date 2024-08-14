@@ -33,6 +33,12 @@ export const SliderWrapper = styled.div`
     pointer-events: all; /* Permite interação com os slides fora da área visível */
   }
 
+  .slick-track{
+
+    display: flex;
+    gap: 10px;
+  }
+
 `
 
 ;

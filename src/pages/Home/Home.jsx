@@ -1,4 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchProducts } from '../../lib/productService';
 import SliderAlt from '../../components/SliderAlt/SliderAlt';
 import SliderMain from '../../components/SliderMain/SliderMain';
 import ProductCard from '../../components/ProductCard/ProductCard';
@@ -9,6 +11,7 @@ import IMG from '../../assets/images/Frame.png';
 import JBLImg from '../../assets/images/JBLbanner.png';
 import Button from '../../components/Button/Button';
 import InfoCard from '../../components/InfoCard/InfoCard';
+import { Skeleton } from '@mui/material'; // Importação do Skeleton
 import {
   AltCardArea,
   BannerCategory,
@@ -16,7 +19,6 @@ import {
   BannerText,
   BannerTitle,
   ButtonArea,
-  CardArea,
   ListElementStyle,
   ListStyle,
   PageSection,
@@ -37,6 +39,25 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export const HomePage = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const productsData = await fetchProducts();
+        setProducts(productsData);
+      } catch (error) {
+        console.error('Failed to load products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
+
   const dataSections = [
     'Moda feminina',
     'Moda Masculina',
@@ -48,15 +69,6 @@ export const HomePage = () => {
     'Saúde e Beleza',
   ];
 
-  const ProductsToList = [1, 2, 3, 4, 5, 6, 7, 8];
-  const ProductsToList2 = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-  ];
-
-  const RandomRatingStars = (max) => {
-    return Math.floor(Math.random() * max);
-  };
-  const navigate = useNavigate();
   return (
     <>
       <PageStyle>
@@ -67,21 +79,11 @@ export const HomePage = () => {
             ))}
           </ListStyle>
           <SliderAlt>
-            <SlideStyle>
-              <img src={IMG} />
-            </SlideStyle>
-            <SlideStyle>
-              <img src={IMG} />
-            </SlideStyle>
-            <SlideStyle>
-              <img src={IMG} />
-            </SlideStyle>
-            <SlideStyle>
-              <img src={IMG} />
-            </SlideStyle>
-            <SlideStyle>
-              <img src={IMG} />
-            </SlideStyle>
+            {[...Array(5)].map((_, index) => (
+              <SlideStyle key={index}>
+                <img src={IMG} alt={`Slide ${index + 1}`} />
+              </SlideStyle>
+            ))}
           </SliderAlt>
         </PageSection>
         <PageSection paddingtop="0">
@@ -90,11 +92,28 @@ export const HomePage = () => {
             <FlashPromoCounter />
           </SectionTitleArea>
           <SliderMain rowsType="1">
-            {ProductsToList.map((value, index) => (
-              <div key={index}>
-                <ProductCard ratingCount={RandomRatingStars(100)} />
-              </div>
-            ))}
+            {loading
+              ? [...Array(8)].map((_, index) => (
+                  <Skeleton
+                    key={index}
+                    variant="rectangular"
+                    animation="wave"
+                    width={210}
+                    height={318}
+                  />
+                ))
+              : products.slice(0, 8).map((product) => (
+                  <div key={product.id}>
+                    <ProductCard
+                      title={product.title}
+                      price={product.price}
+                      discountPercentage={product.discountPercentage}
+                      rating={product.rating}
+                      thumbnail={product.thumbnail}
+                      margin="10px"
+                    />
+                  </div>
+                ))}
           </SliderMain>
         </PageSection>
         <ButtonArea>
@@ -133,14 +152,28 @@ export const HomePage = () => {
             />
           </SectionTitleArea>
           <SliderMain overflow="hidden" rowsType="2">
-            {ProductsToList2.map((value, index) => (
-              <div key={index}>
-                <ProductCard
-                  margin="25px"
-                  ratingCount={RandomRatingStars(100)}
-                />
-              </div>
-            ))}
+            {loading
+              ? [...Array(16)].map((_, index) => (
+                  <Skeleton
+                    key={index}
+                    variant="rectangular"
+                    width={210}
+                    height={318}
+                    style={{ margin: '25px' }}
+                  />
+                ))
+              : products.slice(8, 24).map((product) => (
+                  <div key={product.id}>
+                    <ProductCard
+                      margin="25px"
+                      title={product.title}
+                      price={product.price}
+                      discountPercentage={null}
+                      rating={product.rating}
+                      thumbnail={product.thumbnail}
+                    />
+                  </div>
+                ))}
           </SliderMain>
         </PageSection>
         <ButtonArea>
