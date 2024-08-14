@@ -11,7 +11,7 @@ import IMG from '../../assets/images/Frame.png';
 import JBLImg from '../../assets/images/JBLbanner.png';
 import Button from '../../components/Button/Button';
 import InfoCard from '../../components/InfoCard/InfoCard';
-import { Skeleton } from '@mui/material'; // Importação do Skeleton
+import { Skeleton } from '@mui/material';
 import {
   AltCardArea,
   BannerCategory,
