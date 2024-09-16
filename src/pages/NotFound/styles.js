@@ -5,24 +5,11 @@ export const PageStyle = styled.section`
   flex-direction: column;
   margin: auto;
   margin-top: 70px;
-  margin-bottom: 100px;
+  margin-bottom: 110px;
   width: 75vw;
 `;
 
-export const PageLabelArea = styled.div`
 
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-
-`
-
-export const PageLabel = styled.p`
-
-    font-size: 14px;
-    color: ${(props) => props.color || '#808080'};
-
-`
 export const ErroPage = styled.div`
 
     display: flex;

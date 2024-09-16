@@ -32,12 +32,13 @@ export const StyledFormArea = styled.form`
         color: #4c4c4c
     }
 
-    a {
+    span {
         font-weight: 500;
         color: #4c4c4c;
         text-decoration: none;
         border-bottom: 1px solid #4c4c4c;
         padding-bottom: 2px;
+        cursor: pointer;
     }
 `;
 

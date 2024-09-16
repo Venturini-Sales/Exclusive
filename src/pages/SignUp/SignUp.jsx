@@ -4,6 +4,7 @@ import Button from '../../components/Button/Button';
 import { PageSection, PageStyle } from './styles';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -17,6 +18,8 @@ const theme = createTheme({
 });
 
 export const SignUpPage = () => {
+  const navigate = useNavigate();
+
   return (
     <ThemeProvider theme={theme}>
       <PageStyle>
@@ -40,7 +43,8 @@ export const SignUpPage = () => {
             <TextField id="standard-basic" label="Senha" variant="standard" />
             <Button buttonText="Criar conta" />
             <p>
-              Já tem uma conta? <a href="">Entrar</a>
+              Já tem uma conta?{' '}
+              <span onClick={() => navigate('/login')}>Entrar</span>
             </p>
           </FormComponent>
         </PageSection>

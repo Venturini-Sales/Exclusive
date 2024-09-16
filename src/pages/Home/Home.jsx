@@ -28,14 +28,14 @@ import {
 } from './styles';
 import {
   faMobileScreen,
-  faDisplay,
-  faCamera,
-  faHeadphones,
-  faGamepad,
-  faKeyboard,
   faTruckFast,
   faHeadset,
   faHandHoldingDollar,
+  faLaptop,
+  faTablet,
+  faHeadphonesSimple,
+  faClock,
+  faBaseballBatBall,
 } from '@fortawesome/free-solid-svg-icons';
 
 export const HomePage = () => {
@@ -43,18 +43,18 @@ export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const productsData = await fetchProducts();
-        setProducts(productsData);
-      } catch (error) {
-        console.error('Failed to load products:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const loadProducts = async () => {
+    try {
+      const { response, statusCode } = await fetchProducts();
+      setProducts(response);
+    } catch (error) {
+      console.error('Failed to load products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadProducts();
   }, []);
 
@@ -63,10 +63,10 @@ export const HomePage = () => {
     'Moda Masculina',
     'Eletronicos',
     'Casa e Bem-Estar',
-    'Medicina',
+    'Alimentação',
     'Esportes e Atividades',
-    'Bebês e Brinquedos',
-    'Saúde e Beleza',
+    'Fragâncias',
+    'Acessórios eletronicos',
   ];
 
   return (
@@ -128,11 +128,17 @@ export const HomePage = () => {
           </SectionTitleArea>
           <AltCardArea>
             <CategoryCard iconChildren={faMobileScreen} text="Celulares" />
-            <CategoryCard iconChildren={faDisplay} text="Computadores" />
-            <CategoryCard iconChildren={faKeyboard} text="Teclados" />
-            <CategoryCard iconChildren={faCamera} text="Cameras" />
-            <CategoryCard iconChildren={faHeadphones} text="Fones" />
-            <CategoryCard iconChildren={faGamepad} text="Jogos" />
+            <CategoryCard iconChildren={faLaptop} text="Laptops" />
+            <CategoryCard iconChildren={faClock} text="Relogios Masculinos" />
+            <CategoryCard iconChildren={faTablet} text="Tablets" />
+            <CategoryCard
+              iconChildren={faHeadphonesSimple}
+              text="Acessórios de Celular"
+            />
+            <CategoryCard
+              iconChildren={faBaseballBatBall}
+              text="Acessórios Esportivos"
+            />
           </AltCardArea>
         </PageSection>
         <ButtonArea>
@@ -162,7 +168,7 @@ export const HomePage = () => {
                     style={{ margin: '25px' }}
                   />
                 ))
-              : products.slice(8, 24).map((product) => (
+              : products.slice(8, 50).map((product) => (
                   <div key={product.id}>
                     <ProductCard
                       margin="25px"

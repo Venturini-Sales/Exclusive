@@ -4,8 +4,8 @@ function BandComponent() {
   return (
     <StyledBand>
       <div>
-        Promoção de verão para todos os trajes de banho e frete expresso grátis
-        - 50% de disconto!
+        Promoção de verão para todos os produtos de cuidados pessoais e frete
+        expresso grátis - 50% de disconto!
         <a href="">Compre agora</a>
       </div>
     </StyledBand>

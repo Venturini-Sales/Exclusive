@@ -11,7 +11,7 @@ export const StyledHeader = styled.header`
   justify-content: center;
   padding-top: 38px;
   padding-bottom: 10px;
-
+  
   div:nth-child(1) {
     text-align: center;
     flex: 1;
