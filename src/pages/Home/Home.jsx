@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { fetchProducts } from '../../lib/productService';
+import React from 'react';
 import SliderAlt from '../../components/SliderAlt/SliderAlt';
 import SliderMain from '../../components/SliderMain/SliderMain';
 import ProductCard from '../../components/ProductCard/ProductCard';
@@ -37,38 +35,10 @@ import {
   faClock,
   faBaseballBatBall,
 } from '@fortawesome/free-solid-svg-icons';
+import useHome from './useHome';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-
-  const loadProducts = async () => {
-    try {
-      const { response, statusCode } = await fetchProducts();
-      setProducts(response);
-    } catch (error) {
-      console.error('Failed to load products:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
-  const dataSections = [
-    'Moda feminina',
-    'Moda Masculina',
-    'Eletronicos',
-    'Casa e Bem-Estar',
-    'Alimentação',
-    'Esportes e Atividades',
-    'Fragâncias',
-    'Acessórios eletronicos',
-  ];
-
+  const { dataSections, loading, loadProducts, products, navigate } = useHome();
   return (
     <>
       <PageStyle>
