@@ -5,6 +5,7 @@ import { LogInPage } from '../pages/LogIn/LogIn';
 import { NotFound } from '../pages/NotFound/NotFound';
 import { ProductsPage } from '../pages/Products/Products';
 import { AboutUsPage } from '../pages/AboutUs/AboutUs';
+import { ContactPage } from '../pages/Contact/Contact';
 
 export const RouteList = () => {
   return (
@@ -15,6 +16,7 @@ export const RouteList = () => {
         <Route path="/login" element={<LogInPage />}></Route>
         <Route path="/products" element={<ProductsPage />}></Route>
         <Route path="/aboutus" element={<AboutUsPage />}></Route>
+        <Route path="/contact" element={<ContactPage />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </Router>

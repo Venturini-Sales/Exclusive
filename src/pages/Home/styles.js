@@ -7,7 +7,7 @@ export const PageStyle = styled.section`
     margin-bottom: 150px;
     gap: 100px;
     overflow: hidden;
-`;
+`
 
 export const PageSection = styled.div`
     position: ${(props) => props.position || 'static'};

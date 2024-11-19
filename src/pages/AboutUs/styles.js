@@ -66,7 +66,7 @@ export const EmployerRole = styled.p`
 `
 
 export const InfoArea = styled.div`
-    margin-top: 100px;
+    margin-top: 120px;
     margin-bottom: 100px;
     display: flex;
     justify-content: center;
