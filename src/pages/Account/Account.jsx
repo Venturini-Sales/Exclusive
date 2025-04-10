@@ -2,6 +2,8 @@ import React from 'react';
 import {
   AccountInfoTitle,
   AccountPasswordArea,
+  ButtonsArea,
+  CancelButton,
   ContentSections,
   ContentTitle,
   InputArea,
@@ -10,8 +12,12 @@ import {
   PageStyle,
   PasswordAreaTitle,
   Section,
+  Sections,
+  SectionsTitle,
   StyledInput,
+  SubSections,
 } from './styles';
+import Button from '../../components/Button/Button';
 
 export const Account = () => {
   return (
@@ -20,7 +26,27 @@ export const Account = () => {
         <ContentTitle>
           Bem-vindo! <span>John Doe da Silva!</span>
         </ContentTitle>
-        <ContentSections></ContentSections>
+        <ContentSections>
+          <Sections>
+            <SectionsTitle>Gerenciamento de Conta</SectionsTitle>
+            <SubSections>
+              <li>
+                <a href="">Meu Perfil</a>
+              </li>
+            </SubSections>
+          </Sections>
+          <Sections>
+            <SectionsTitle>Gerenciamento de Compras</SectionsTitle>
+            <SubSections>
+              <li>
+                <a href="">Carrinho de Compras</a>
+              </li>
+              <li>
+                <a href="">Lista de Desejos</a>
+              </li>
+            </SubSections>
+          </Sections>
+        </ContentSections>
         <Section>
           <AccountInfoTitle>Edite Seu Perfil</AccountInfoTitle>
           <InputArea>
@@ -72,6 +98,11 @@ export const Account = () => {
                 <input type="text" placeholder="Confirmar Nova Senha" />
               </StyledInput>
             </InputTotalArea>
+
+            <ButtonsArea>
+              <CancelButton>Cancelar</CancelButton>
+              <Button buttonText="Salvar" />
+            </ButtonsArea>
           </AccountPasswordArea>
         </Section>
       </PageContent>

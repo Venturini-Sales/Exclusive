@@ -11,8 +11,10 @@ export const PageStyle = styled.section`
 
 export const PageContent = styled.div`
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    padding: 2px;
+    gap: 10px;
 
 `
 
@@ -34,17 +36,48 @@ export const ContentSections = styled.div`
     grid-row: span 4 / span 4;
     grid-column-start: 1;
     grid-row-start: 2;
-    background-color: red;
+    
+`
+
+export const Sections = styled.div`
+        
+`
+
+export const SectionsTitle = styled.h3`
+    font-size: 16px;
+    font-weight: 500;
+
+`
+
+export const SubSections = styled.ul`
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    li{
+        margin-left: 20px;
+        margin-bottom: 5px;
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: #DB4444;
+        }
+    }
+
 `
 
 export const Section = styled.div`
     grid-column: span 4 / span 4;
     grid-row: span 4 / span 4;
     grid-row-start: 2;
+    padding: 30px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    box-shadow: 0px 0px 5px rgb(0,0,0,0.2);
 `
 export const AccountInfoTitle = styled.h3`
     color: #DB4444;
@@ -113,4 +146,15 @@ export const AccountPasswordArea = styled.div`
         width: 630px;
     }
 
+`
+export const ButtonsArea = styled.div`
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+`
+
+export const CancelButton = styled.button`
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 `
