@@ -4,4 +4,4 @@ const api = axios.create({
   baseURL: 'https://dummyjson.com',
 });
 
-export default api;
+export default api; 

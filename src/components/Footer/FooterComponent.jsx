@@ -50,7 +50,7 @@ function FooterComponent() {
             <p>exclusive@corp.com</p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>+55 21 93447-8276</p>
+            <p>+55 12 9 9678-7287</p>
           </ListElementStyle>
         </ListStyle>
       </SupportSection>

@@ -39,7 +39,7 @@ export const ContactPage = () => {
                   <InfoTitle>Faça uma ligação</InfoTitle>
                 </InfoTitleArea>
                 <InfoText>Estamos disponiveis 24 horas por dia.</InfoText>
-                <InfoText>Telefone: +55 21 93447-8276</InfoText>
+                <InfoText>Telefone: +55 12 9 9678-7287</InfoText>
               </ContactArea>
               <ContactArea borderbottom="none">
                 <InfoTitleArea>

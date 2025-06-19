@@ -1,0 +1,97 @@
+import styled from 'styled-components';
+
+export const PageStyle = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 67px;
+    margin-bottom: 67px;
+    overflow: hidden;
+`
+
+export const PageTitleArea = styled.div`
+    display: flex;
+    align-items: flex-start;
+    font-size: 14px;
+`
+
+export const PageTitle = styled.h1`
+    font-size: 24px;
+    font-weight: 600;
+`
+
+export const BillingArea = styled.div`
+    margin-top: 50px;
+    display: flex;
+`
+
+export const InputArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+
+export const InputTotalArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+ p{
+    font-size: 14px ;
+ }
+
+`
+
+export const StyledInput = styled.div`
+  background-color: #f5f5f5;
+  color: #000000;
+  height: 38px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: auto;
+  gap: 15px;
+  border-radius: 5px;
+  
+
+  input {
+    width: 300px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    
+  }
+`
+
+export const ProductArea = styled.div`
+
+`
+
+export const ProductsDetail = styled.div`
+    padding: 22px;
+`
+
+export const ProductDetailArea = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+`
+
+export const ProductDetailInfo = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+`
+
+export const ProductImage = styled.img`
+    width: 50px;
+
+`
+
+export const ProductName = styled.div``
+
+export const ProductPrice = styled.div``
+

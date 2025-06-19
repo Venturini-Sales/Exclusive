@@ -12,9 +12,13 @@ export const PageStyle = styled.section`
 export const ContactSection = styled.div`
     display: flex;
     flex-direction: row;
+    gap: 10px;
+    padding: 2px;
 `
 
 export const ContactInfoArea = styled.div`
+    padding: 30px;
+    box-shadow: 0px 0px 5px rgb(0,0,0,0.2);
 
 `
 
@@ -99,6 +103,7 @@ export const ButtonArea = styled.div`
 `
 
 export const FormArea = styled.div`
+    padding: 30px;
     display: grid;
     gap: 5px;
     grid-template-columns: auto auto auto;
@@ -107,5 +112,6 @@ export const FormArea = styled.div`
     "inputs inputs inputs"
     "textArea textArea textArea"
     ". . button";
+    box-shadow: 0px 0px 5px rgb(0,0,0,0.2);
 
 `
