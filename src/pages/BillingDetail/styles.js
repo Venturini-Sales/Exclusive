@@ -65,25 +65,26 @@ export const StyledInput = styled.div`
 `
 
 export const ProductArea = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
 `
 
 export const ProductsDetail = styled.div`
-    padding: 22px;
 `
 
 export const ProductDetailArea = styled.div`
     display: flex;
     align-items: center;
-    gap: 50px;
-
+    gap: 200px;
+    margin-bottom: 30px;
 `
 
 export const ProductDetailInfo = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
-
+    
 `
 
 export const ProductImage = styled.img`
@@ -95,3 +96,12 @@ export const ProductName = styled.div``
 
 export const ProductPrice = styled.div``
 
+export const FullPriceArea = styled.div``
+
+export const PriceContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: ${(props) => props.bordertop || '2px solid #999999'};
+`
