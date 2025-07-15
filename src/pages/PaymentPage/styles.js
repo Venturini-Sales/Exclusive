@@ -80,6 +80,7 @@ export const ProductsDetail = styled.div`
 export const ProductDetailArea = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 200px;
     margin-bottom: 30px;
 `
@@ -107,7 +108,7 @@ export const PriceContainer = styled.div`
     justify-content: space-between;
     margin-bottom: 15px;
     padding-bottom: 15px;
-    border-bottom: ${(props) => props.bordertop || '2px solid #999999'};
+    border-bottom: ${(props) => props.borderbottom || '2px solid #999999'};
 `
 
 export const SelectRadioArea = styled.div`

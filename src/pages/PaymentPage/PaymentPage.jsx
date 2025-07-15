@@ -30,7 +30,7 @@ import Button from '../../components/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 
-export const BillingPage = () => {
+export const PaymentPage = () => {
   return (
     <PageStyle>
       <PageContainer>
@@ -102,11 +102,11 @@ export const BillingPage = () => {
                   <span>R$</span>650
                 </ProductPrice>
               </ProductDetailArea>
-              <FullPriceArea>
+              <FullPriceArea iceArea>
                 <PriceContainer>
                   <div>Subtotal</div>
                   <div>
-                    <span>R$</span>650
+                    <span>R$</span>1300
                   </div>
                 </PriceContainer>
                 <PriceContainer>
@@ -115,10 +115,10 @@ export const BillingPage = () => {
                     <span>R$</span>20
                   </div>
                 </PriceContainer>
-                <PriceContainer bordertop="none">
+                <PriceContainer borderbottom="none">
                   <div>Total</div>
                   <div>
-                    <span>R$</span>670
+                    <span>R$</span>1320
                   </div>
                 </PriceContainer>
               </FullPriceArea>
