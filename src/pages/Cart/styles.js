@@ -100,8 +100,6 @@ export const NumberInput = styled.input.attrs({ type: 'number' })`
   padding: 15px 0; 
   }
 
-  -moz-appearance: textfield;
-
   &:focus {
     outline: none;
     caret-color: transparent;
