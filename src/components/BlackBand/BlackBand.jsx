@@ -5,7 +5,7 @@ function BandComponent() {
     <StyledBand>
       <div>
         Promoção de verão para todos os produtos de cuidados pessoais e frete
-        expresso grátis - 50% de disconto!
+        expresso grátis - 50% de desconto!
         <a href="">Compre agora</a>
       </div>
     </StyledBand>

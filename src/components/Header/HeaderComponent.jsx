@@ -10,7 +10,7 @@ function HeaderComponent() {
           <li>Inicio</li>
           <li>Contato</li>
           <li>Sobre</li>
-          <li>inscrever-se</li>
+          <li>Inscrever-se</li>
         </ul>
       </div>
 
