@@ -42,7 +42,7 @@ const ProductCard = ({
         </StyledCardButtons>
       </StyledCardImage>
       <StyledCardInfo>
-        <p>{title}</p>
+        <p>{title.length > 30 ? `${title.slice(0, 30)}...` : title}</p>
         <StyledPriceArea>
           {promoPrice && <p>{`$${promoPrice.toFixed(2)}`}</p>}
           <p>{`$${price.toFixed(2)}`}</p>

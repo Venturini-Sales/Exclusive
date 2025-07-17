@@ -14,7 +14,7 @@ export const StyledCardImage = styled.div `
     img{
         width: 270px;
         height: 250px;
-        background-color: black;
+        background-color: #404040;
     }
 
 `
