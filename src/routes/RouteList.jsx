@@ -8,7 +8,7 @@ import { AboutUsPage } from '../pages/AboutUs/AboutUs';
 import { ContactPage } from '../pages/Contact/Contact';
 import { Account } from '../pages/Account/Account';
 import { PaymentPage } from '../pages/PaymentPage/PaymentPage';
-import { CartPage } from '../pages/Cart/cart';
+import { CartPage } from '../pages/Cart/Cart';
 import { WishlistPage } from '../pages/Wishlist/Wishlist';
 
 export const RouteList = () => {
@@ -24,6 +24,7 @@ export const RouteList = () => {
         <Route path="/account" element={<Account />}></Route>
         <Route path="/payment" element={<PaymentPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
+        <Route path="/Product" element={<ProductsPage />}></Route>
         <Route path="/wishlist" element={<WishlistPage />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

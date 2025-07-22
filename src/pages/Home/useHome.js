@@ -28,7 +28,7 @@ const useHome = () => {
       'Moda Masculina',
       'Eletronicos',
       'Casa e Bem-Estar',
-      'Alimentação',
+      'Cuidados Pessoais',
       'Esportes e Atividades',
       'Fragâncias',
       'Acessórios eletronicos',
