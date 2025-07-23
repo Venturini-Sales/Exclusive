@@ -99,7 +99,8 @@ export const ProductImage = styled.img`
 
 export const ProductName = styled.div``
 
-export const ProductPrice = styled.div``
+export const ProductPrice = styled.div`
+`
 
 export const FullPriceArea = styled.div``
 

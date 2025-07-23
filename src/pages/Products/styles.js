@@ -59,7 +59,27 @@ export const ProductReviewCount = styled.div`
 export const ProductPrice = styled.div`
     font-size: 24px;
     font-weight: 400;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+`
 
+export const ProductPriceOriginal = styled.div`
+    
+
+`
+
+export const ProductPricePromo = styled.div`
+   color: #DB4444;
+
+`
+
+export const ProductPromoPercent = styled.div`
+    background-color: #DB4444;
+    color: white;
+    padding: 3px;
+    border-radius: 4px;
+    font-size: 10px;
 `
 
 export const ProductSynopsis = styled.div`

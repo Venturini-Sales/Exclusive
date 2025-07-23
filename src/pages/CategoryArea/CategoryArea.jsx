@@ -1,17 +1,15 @@
-import { Skeleton } from '@mui/material';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { PageSection, PageStyle, WishlistPageHeader } from './Styles';
 import useHome from '../Home/useHome';
+import { PageSection, PageStyle, WishlistPageHeader } from './styles';
 
-export const WishlistPage = () => {
+export const CategoryPage = () => {
   const { products } = useHome();
+
   return (
     <>
       <PageStyle>
         <WishlistPageHeader>
-          <div>
-            Wishlist <span>(?)</span>
-          </div>
+          <div>Produtos</div>
           <button>Colocar todos no carrinho</button>
         </WishlistPageHeader>
         <PageSection>

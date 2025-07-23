@@ -1,16 +1,21 @@
+import { useNavigate } from 'react-router-dom';
 import { StyledHeader, StyledInput } from './styles';
 
 function HeaderComponent() {
+  const navigate = useNavigate();
+
   return (
     <StyledHeader>
-      <div>Exclusive</div>
+      <div onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+        Exclusive
+      </div>
 
       <div>
         <ul>
-          <li>Inicio</li>
-          <li>Contato</li>
-          <li>Sobre</li>
-          <li>Inscrever-se</li>
+          <li onClick={() => navigate('/')}>Inicio</li>
+          <li onClick={() => navigate('/contact')}>Contato</li>
+          <li onClick={() => navigate('/aboutus')}>Sobre</li>
+          <li onClick={() => navigate('/signup')}>Inscrever-se</li>
         </ul>
       </div>
 

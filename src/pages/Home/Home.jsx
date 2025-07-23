@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SliderAlt from '../../components/SliderAlt/SliderAlt';
 import SliderMain from '../../components/SliderMain/SliderMain';
 import ProductCard from '../../components/ProductCard/ProductCard';
@@ -74,14 +75,21 @@ export const HomePage = () => {
                 ))
               : products.slice(0, 8).map((product) => (
                   <div key={product.id}>
-                    <ProductCard
-                      title={product.title}
-                      price={product.price}
-                      discountPercentage={product.discountPercentage}
-                      rating={product.rating}
-                      thumbnail={product.thumbnail}
-                      margin="10px"
-                    />
+                    <Link
+                      to={`/product/${product.id}`}
+                      state={{ hasPromo: product.discountPercentage > 0 }}
+                      key={product.id}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      <ProductCard
+                        title={product.title}
+                        price={product.price}
+                        discountPercentage={product.discountPercentage}
+                        rating={product.rating}
+                        thumbnail={product.thumbnail}
+                        margin="10px"
+                      />
+                    </Link>
                   </div>
                 ))}
           </SliderMain>
@@ -140,14 +148,20 @@ export const HomePage = () => {
                 ))
               : products.slice(8, 50).map((product) => (
                   <div key={product.id}>
-                    <ProductCard
-                      margin="25px"
-                      title={product.title}
-                      price={product.price}
-                      discountPercentage={null}
-                      rating={product.rating}
-                      thumbnail={product.thumbnail}
-                    />
+                    <Link
+                      to={`/product/${product.id}`}
+                      key={product.id}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      <ProductCard
+                        margin="25px"
+                        title={product.title}
+                        price={product.price}
+                        discountPercentage={null}
+                        rating={product.rating}
+                        thumbnail={product.thumbnail}
+                      />
+                    </Link>
                   </div>
                 ))}
           </SliderMain>

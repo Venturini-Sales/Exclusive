@@ -20,3 +20,24 @@ export const fetchProducts = async () => {
     return { response: error.response.data, statusCode: error.response.status };
   }
 };
+
+
+export const fetchProductsByCategory = async (category) => {
+  try {
+    const response = await api.get(`/products/category/${category}`);
+    return { response: response.data.products, statusCode: response.status };
+  } catch (error) {
+    console.error('Error fetching category products:', error);
+    return { response: error.response?.data, statusCode: error.response?.status || 500 };
+  }
+};
+
+export const fetchProductById = async (id) => {
+  try {
+    const response = await api.get(`/products/${id}`);
+    return { response: response.data, statusCode: response.status };
+  } catch (error) {
+    console.error('Error fetching product by ID:', error);
+    return { response: error.response?.data, statusCode: error.response?.status || 500 };
+  }
+};

@@ -10,24 +10,24 @@ import { Account } from '../pages/Account/Account';
 import { PaymentPage } from '../pages/PaymentPage/PaymentPage';
 import { CartPage } from '../pages/Cart/Cart';
 import { WishlistPage } from '../pages/Wishlist/Wishlist';
+import { CategoryPage } from '../pages/CategoryArea/CategoryArea';
 
 export const RouteList = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/signup" element={<SignUpPage />}></Route>
-        <Route path="/login" element={<LogInPage />}></Route>
-        <Route path="/products" element={<ProductsPage />}></Route>
-        <Route path="/aboutus" element={<AboutUsPage />}></Route>
-        <Route path="/contact" element={<ContactPage />}></Route>
-        <Route path="/account" element={<Account />}></Route>
-        <Route path="/payment" element={<PaymentPage />}></Route>
-        <Route path="/cart" element={<CartPage />}></Route>
-        <Route path="/Product" element={<ProductsPage />}></Route>
-        <Route path="/wishlist" element={<WishlistPage />}></Route>
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<HomePage />}></Route>
+      <Route path="/signup" element={<SignUpPage />}></Route>
+      <Route path="/login" element={<LogInPage />}></Route>
+      <Route path="/products" element={<ProductsPage />}></Route>
+      <Route path="/aboutus" element={<AboutUsPage />}></Route>
+      <Route path="/contact" element={<ContactPage />}></Route>
+      <Route path="/account" element={<Account />}></Route>
+      <Route path="/payment" element={<PaymentPage />}></Route>
+      <Route path="/cart" element={<CartPage />}></Route>
+      <Route path="/productscategory" element={<CategoryPage />}></Route>
+      <Route path="/product/:id" element={<ProductsPage />}></Route>
+      <Route path="/wishlist" element={<WishlistPage />}></Route>
+      <Route path="*" element={<NotFound />}></Route>
+    </Routes>
   );
 };
