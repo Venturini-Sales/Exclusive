@@ -8,18 +8,27 @@ import {
 } from './styles';
 
 const FlashPromoCounter = () => {
-  const initialTime = 60 * 60;
-  const [timeRemaining, setTimeRemaining] = useState(initialTime);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+
+  const calculateSecondsUntilMidnight = () => {
+    const now = new Date();
+    const midnight = new Date();
+
+    midnight.setHours(24, 0, 0, 0); // Próxima meia-noite
+
+    return Math.floor((midnight.getTime() - now.getTime()) / 1000); // segundos restantes
+  };
 
   useEffect(() => {
+    setTimeRemaining(calculateSecondsUntilMidnight());
+
     const timerInterval = setInterval(() => {
       setTimeRemaining((prevTime) => {
-        if (prevTime === 0) {
-          clearInterval(timerInterval);
-          return 0;
-        } else {
-          return prevTime - 1;
+        if (prevTime <= 1) {
+          // Quando chegar à meia-noite, reinicia
+          return calculateSecondsUntilMidnight();
         }
+        return prevTime - 1;
       });
     }, 1000);
 
@@ -29,21 +38,22 @@ const FlashPromoCounter = () => {
   const hours = Math.floor(timeRemaining / 3600);
   const minutes = Math.floor((timeRemaining % 3600) / 60);
   const seconds = timeRemaining % 60;
+
   return (
     <CounterArea>
       <CounterNumberArea>
         <CounterLabel>Horas</CounterLabel>
-        <CounterNumbers>{hours}</CounterNumbers>
+        <CounterNumbers>{String(hours).padStart(2, '0')}</CounterNumbers>
       </CounterNumberArea>
       <Colon>:</Colon>
       <CounterNumberArea>
-        <CounterLabel>minutos</CounterLabel>
-        <CounterNumbers>{minutes}</CounterNumbers>
+        <CounterLabel>Minutos</CounterLabel>
+        <CounterNumbers>{String(minutes).padStart(2, '0')}</CounterNumbers>
       </CounterNumberArea>
       <Colon>:</Colon>
       <CounterNumberArea>
-        <CounterLabel>segundos</CounterLabel>
-        <CounterNumbers>{seconds}</CounterNumbers>
+        <CounterLabel>Segundos</CounterLabel>
+        <CounterNumbers>{String(seconds).padStart(2, '0')}</CounterNumbers>
       </CounterNumberArea>
     </CounterArea>
   );

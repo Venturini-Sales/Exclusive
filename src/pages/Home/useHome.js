@@ -24,15 +24,16 @@ const useHome = () => {
     }, []);
   
     const dataSections = [
-      'Moda feminina',
-      'Moda Masculina',
-      'Eletronicos',
-      'Casa e Bem-Estar',
-      'Cuidados Pessoais',
-      'Esportes e Atividades',
-      'Fragâncias',
-      'Acessórios eletronicos',
-    ];
+  { label: 'Moda Feminina', category: 'womens-dresses' },
+  { label: 'Moda Masculina', category: 'mens-shirts' },
+  { label: 'Cozinha', category: 'kitchen-accessories' },
+  { label: 'Decorações', category: 'home-decoration' },
+  { label: 'Cuidados Pessoais', category: 'skin-care' },
+  { label: 'Esportes e Atividades', category: 'sports-accessories' },
+  { label: 'Fragâncias', category: 'fragrances' },
+  { label: 'Acessórios de Celular', category: 'mobile-accessories' },
+];
+
   
   return {dataSections, loadProducts, products, loading, navigate}
 }

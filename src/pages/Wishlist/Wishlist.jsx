@@ -1,4 +1,5 @@
 import { Skeleton } from '@mui/material';
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { PageSection, PageStyle, WishlistPageHeader } from './Styles';
 import useHome from '../Home/useHome';
@@ -9,9 +10,7 @@ export const WishlistPage = () => {
     <>
       <PageStyle>
         <WishlistPageHeader>
-          <div>
-            Wishlist <span>(?)</span>
-          </div>
+          <SectionTitle subTitleText="Lista de Desejos" />
           <button>Colocar todos no carrinho</button>
         </WishlistPageHeader>
         <PageSection>

@@ -58,7 +58,7 @@ export const ProductsPage = () => {
           await fetchProductsByCategory(category);
         if (catStatus === 200) {
           const currentId = Number(productData.id);
-          const filtered = categoryProducts.filter(
+          const filtered = categoryProducts.filter( 
             (p) => Number(p.id) !== currentId,
           );
 
@@ -201,13 +201,19 @@ export const ProductsPage = () => {
             <div key={p.id}>
               <Link
                 to={`/product/${p.id}`}
+                state={{
+                  hasPromo:
+                    p.id >= 121 && p.id <= 128 && p.discountPercentage > 0,
+                }}
                 key={p.id}
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <ProductCard
                   title={p.title}
                   price={p.price}
-                  discountPercentage={null}
+                  discountPercentage={
+                    p.id >= 121 && p.id <= 128 ? p.discountPercentage : null
+                  }
                   rating={p.rating}
                   thumbnail={p.thumbnail}
                 />

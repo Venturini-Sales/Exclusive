@@ -35,6 +35,7 @@ import {
   faHeadphonesSimple,
   faClock,
   faBaseballBatBall,
+  faCouch,
 } from '@fortawesome/free-solid-svg-icons';
 import useHome from './useHome';
 
@@ -45,10 +46,21 @@ export const HomePage = () => {
       <PageStyle>
         <PageSection paddingtop="0" flexdirection="row">
           <ListStyle>
-            {dataSections.map((value, index) => (
-              <ListElementStyle key={index}>{value}</ListElementStyle>
+            {dataSections.map((item, index) => (
+              <ListElementStyle
+                key={index}
+                onClick={() =>
+                  navigate('/productscategory', {
+                    state: { category: item.category },
+                  })
+                }
+                style={{ cursor: 'pointer' }}
+              >
+                {item.label}
+              </ListElementStyle>
             ))}
           </ListStyle>
+
           <SliderAlt>
             {[...Array(5)].map((_, index) => (
               <SlideStyle key={index}>
@@ -95,7 +107,14 @@ export const HomePage = () => {
           </SliderMain>
         </PageSection>
         <ButtonArea>
-          <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
+          <Button
+            buttonText={'Ver mais'}
+            onClick={() =>
+              navigate('/productscategory', {
+                state: { category: 'promoção' },
+              })
+            }
+          />
         </ButtonArea>
         <PageSection bordertop="1px solid #b2b2b2">
           <SectionTitleArea>
@@ -105,22 +124,67 @@ export const HomePage = () => {
             />
           </SectionTitleArea>
           <AltCardArea>
-            <CategoryCard iconChildren={faMobileScreen} text="Celulares" />
-            <CategoryCard iconChildren={faLaptop} text="Laptops" />
-            <CategoryCard iconChildren={faClock} text="Relogios Masculinos" />
-            <CategoryCard iconChildren={faTablet} text="Tablets" />
+            <CategoryCard
+              iconChildren={faMobileScreen}
+              text="Celulares"
+              onClick={() =>
+                navigate('/productscategory', {
+                  state: { category: 'smartphones' },
+                })
+              }
+            />
+            <CategoryCard
+              iconChildren={faLaptop}
+              text="Laptops"
+              onClick={() =>
+                navigate('/productscategory', {
+                  state: { category: 'laptops' },
+                })
+              }
+            />
+            <CategoryCard
+              iconChildren={faCouch}
+              text="Móveis"
+              onClick={() =>
+                navigate('/productscategory', {
+                  state: { category: 'furniture' },
+                })
+              }
+            />
+            <CategoryCard
+              iconChildren={faTablet}
+              text="Tablets"
+              onClick={() =>
+                navigate('/productscategory', {
+                  state: { category: 'tablets' },
+                })
+              }
+            />
             <CategoryCard
               iconChildren={faHeadphonesSimple}
               text="Acessórios de Celular"
+              onClick={() =>
+                navigate('/productscategory', {
+                  state: { category: 'mobile-accessories' },
+                })
+              }
             />
             <CategoryCard
               iconChildren={faBaseballBatBall}
               text="Acessórios Esportivos"
+              onClick={() =>
+                navigate('/productscategory', {
+                  state: { category: 'smartphones' },
+                })
+              }
             />
           </AltCardArea>
         </PageSection>
         <ButtonArea>
-          <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
+          <Button
+            buttonText={'Ver mais'}
+            onClick={() => navigate('/productscategory')}
+          />
         </ButtonArea>
         <PageSection position="relative" paddingtop="0">
           <BannerImg src={JBLImg} alt="" />
@@ -167,7 +231,10 @@ export const HomePage = () => {
           </SliderMain>
         </PageSection>
         <ButtonArea>
-          <Button buttonText={'Ver mais'} onClick={() => navigate('/login')} />
+          <Button
+            buttonText={'Ver mais'}
+            onClick={() => navigate('/productscategory')}
+          />
         </ButtonArea>
         <PageSection
           paddingtop="20px"
