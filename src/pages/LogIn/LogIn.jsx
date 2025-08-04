@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import IMG from '../../assets/images/Phoneimage.png';
 import FormComponent from '../../components/Form/FormComponent';
 import Button from '../../components/Button/Button';
@@ -17,6 +20,23 @@ const theme = createTheme({
 });
 
 export const LogInPage = () => {
+  const navigate = useNavigate();
+  const { signin } = useAuth();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const res = signin(email, password);
+    if (res) {
+      setError(res);
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <PageStyle>
@@ -28,14 +48,26 @@ export const LogInPage = () => {
           <FormComponent
             title="Faça login no Exclusive"
             subTitle="Insira seus dados abaixo"
+            onSubmit={handleLogin}
           >
             <TextField
-              id="standard-basic"
-              label="Email ou Numero de Telefone"
+              label="Email ou Número de Telefone"
               variant="standard"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              InputLabelProps={{ required: false }}
             />
 
-            <TextField id="standard-basic" label="Senha" variant="standard" />
+            <TextField
+              label="Senha"
+              variant="standard"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              InputLabelProps={{ required: false }}
+            />
 
             <ButtonFormArea>
               <Button buttonText="Entrar" />
@@ -43,6 +75,7 @@ export const LogInPage = () => {
                 <a href="">Esqueceu sua senha?</a>
               </p>
             </ButtonFormArea>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
           </FormComponent>
         </PageSection>
       </PageStyle>

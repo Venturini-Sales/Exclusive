@@ -3,6 +3,7 @@ import HeaderComponent from './components/Header/HeaderComponent';
 import FooterComponent from './components/Footer/FooterComponent';
 import { createGlobalStyle } from 'styled-components';
 import { RouteList } from './routes/RouteList';
+import { AuthProvider } from './contexts/auth';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -16,11 +17,13 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <BandComponent />
-      <HeaderComponent />
-      <RouteList />
-      <FooterComponent />
+      <AuthProvider>
+        <GlobalStyle />
+        <BandComponent />
+        <HeaderComponent />
+        <RouteList />
+        <FooterComponent />
+      </AuthProvider>
     </>
   );
 }

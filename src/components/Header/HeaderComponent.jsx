@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { StyledHeader, StyledInput } from './styles';
+import useAuth from '../../hooks/useAuth';
 
 function HeaderComponent() {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   return (
     <StyledHeader>
@@ -15,7 +17,9 @@ function HeaderComponent() {
           <li onClick={() => navigate('/')}>Inicio</li>
           <li onClick={() => navigate('/contact')}>Contato</li>
           <li onClick={() => navigate('/aboutus')}>Sobre</li>
-          <li onClick={() => navigate('/signup')}>Inscrever-se</li>
+          <li onClick={() => navigate(user ? '/account' : '/signup')}>
+            {user ? 'Conta' : 'Inscrever-se'}
+          </li>
         </ul>
       </div>
 

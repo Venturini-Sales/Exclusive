@@ -57,11 +57,12 @@ export const SubSections = styled.ul`
         margin-left: 20px;
         margin-bottom: 5px;
 
-        a{
+        p{
             text-decoration: none;
             color: black;
         }
-        a:hover{
+        p:hover{
+            cursor: pointer;
             color: #DB4444;
         }
     }

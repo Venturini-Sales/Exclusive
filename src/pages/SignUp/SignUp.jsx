@@ -1,10 +1,12 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import IMG from '../../assets/images/Phoneimage.png';
 import FormComponent from '../../components/Form/FormComponent';
 import Button from '../../components/Button/Button';
 import { PageSection, PageStyle } from './styles';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -19,6 +21,22 @@ const theme = createTheme({
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
+  const { signup } = useAuth();
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    const res = signup(name, email, password);
+    if (res) {
+      setError(res);
+    } else {
+      navigate('/login');
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -31,17 +49,38 @@ export const SignUpPage = () => {
           <FormComponent
             title="Crie a sua conta aqui"
             subTitle="Insira seus dados abaixo"
+            onSubmit={handleSignup}
           >
-            <TextField id="standard-basic" label="Nome" variant="standard" />
-
             <TextField
-              id="standard-basic"
-              label="Email ou Numero de Telefone"
+              label="Nome"
               variant="standard"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              InputLabelProps={{ required: false }}
             />
 
-            <TextField id="standard-basic" label="Senha" variant="standard" />
+            <TextField
+              label="Email ou Número de Telefone"
+              variant="standard"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              InputLabelProps={{ required: false }}
+            />
+
+            <TextField
+              label="Senha"
+              variant="standard"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              InputLabelProps={{ required: false }}
+            />
+
             <Button buttonText="Criar conta" />
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <p>
               Já tem uma conta?{' '}
               <span onClick={() => navigate('/login')}>Entrar</span>
