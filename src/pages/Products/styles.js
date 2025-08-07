@@ -101,6 +101,7 @@ export const WishButton = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0px 15px;
+    cursor: pointer;
 
 `
 

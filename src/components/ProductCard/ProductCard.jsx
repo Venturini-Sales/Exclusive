@@ -12,6 +12,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../RatingStars/RatingStars';
+import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({
   discountPercentage,
@@ -20,10 +22,28 @@ const ProductCard = ({
   rating,
   thumbnail,
   margin,
+  id,
 }) => {
   const promoPrice = discountPercentage
     ? price - price * (discountPercentage / 100)
     : null;
+
+  const { user, toggleWishlistItem, isInWishlist } = useAuth();
+  const navigate = useNavigate();
+
+  const handleWishlistClick = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (!user) {
+      navigate('/signup');
+      return;
+    }
+
+    toggleWishlistItem(id);
+  };
+
+  const isWishlisted = isInWishlist(id);
 
   return (
     <StyledCard margin={margin}>
@@ -33,11 +53,14 @@ const ProductCard = ({
           <StyledSaleInfo>{`${discountPercentage}%`}</StyledSaleInfo>
         )}
         <StyledCardButtons>
-          <StyledCardButton>
+          <StyledCardButton onClick={(e) => e.preventDefault()}>
             <FontAwesomeIcon icon={faEye} style={{ color: '#000000' }} />
           </StyledCardButton>
-          <StyledCardButton>
-            <FontAwesomeIcon icon={faHeart} style={{ color: '#000000' }} />
+          <StyledCardButton onClick={handleWishlistClick}>
+            <FontAwesomeIcon
+              icon={faHeart}
+              style={{ color: isWishlisted ? '#DB4444' : '#000000' }}
+            />
           </StyledCardButton>
         </StyledCardButtons>
       </StyledCardImage>

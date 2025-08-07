@@ -29,20 +29,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
   fetchProductById,
   fetchProductsByCategory,
 } from '../../services/productService';
 import { Skeleton, Box } from '@mui/material';
+import useAuth from '../../hooks/useAuth';
 
 export const ProductsPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, toggleWishlistItem, isInWishlist } = useAuth();
+
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
 
   const hasPromo = location.state?.hasPromo ?? false;
 
@@ -56,9 +60,10 @@ export const ProductsPage = () => {
         const category = productData.category;
         const { response: categoryProducts, statusCode: catStatus } =
           await fetchProductsByCategory(category);
+
         if (catStatus === 200) {
           const currentId = Number(productData.id);
-          const filtered = categoryProducts.filter( 
+          const filtered = categoryProducts.filter(
             (p) => Number(p.id) !== currentId,
           );
 
@@ -70,8 +75,20 @@ export const ProductsPage = () => {
       }
       setLoading(false);
     }
+
     loadProductAndRelated();
   }, [id]);
+
+  const handleWishlistClick = () => {
+    if (!user) {
+      navigate('/signup');
+      return;
+    }
+
+    toggleWishlistItem(product.id);
+  };
+
+  const isWishlisted = isInWishlist(product?.id);
 
   if (loading)
     return (
@@ -169,11 +186,11 @@ export const ProductsPage = () => {
           <ProductInfoBottom>
             <Counter />
             <Button buttonText="Comprar" />
-            <WishButton>
+            <WishButton onClick={handleWishlistClick}>
               <FontAwesomeIcon
                 icon={faHeart}
                 size="xl"
-                style={{ color: '#000000' }}
+                style={{ color: isWishlisted ? '#DB4444' : '#000000' }}
               />
             </WishButton>
           </ProductInfoBottom>
@@ -209,6 +226,7 @@ export const ProductsPage = () => {
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <ProductCard
+                  id={p.id}
                   title={p.title}
                   price={p.price}
                   discountPercentage={

@@ -109,10 +109,10 @@ export const Account = () => {
           <Sections>
             <SectionsTitle>Gerenciamento de Compras</SectionsTitle>
             <SubSections>
-              <li>
+              <li onClick={() => navigate('/cart')}>
                 <p>Carrinho de Compras</p>
               </li>
-              <li>
+              <li onClick={() => navigate('/wishlist')}>
                 <p>Lista de Desejos</p>
               </li>
             </SubSections>
@@ -147,13 +147,6 @@ export const Account = () => {
               <p>Email</p>
               <StyledInput cursortype="not-allowed">
                 <input type="text" placeholder={user?.email} readOnly />
-              </StyledInput>
-            </InputTotalArea>
-
-            <InputTotalArea>
-              <p>Endereço</p>
-              <StyledInput>
-                <input type="text" placeholder="Rua Fulano de Tal, 123, RJ" />
               </StyledInput>
             </InputTotalArea>
           </InputArea>

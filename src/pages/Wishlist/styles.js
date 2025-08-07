@@ -37,3 +37,36 @@ export const WishlistPageHeader = styled.div`
         cursor: pointer;
         }
 `
+
+export const WishIconArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    p{
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+`
+
+export const WishIcon = styled.div`
+
+    img{
+        width: 300px;
+    }
+
+`
+
+
+export const SectionsNumberArea = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+      
+
+`
+
+export const NumbersArea = styled.span``
+

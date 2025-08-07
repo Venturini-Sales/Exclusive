@@ -15,7 +15,7 @@ import useAuth from '../hooks/useAuth';
 
 const Private = ({ Item }) => {
   const { signed } = useAuth();
-  return signed ? <Item /> : <LogInPage />;
+  return signed ? <Item /> : <SignUpPage />;
 };
 
 const PermReverse = ({ Item }) => {
@@ -37,7 +37,7 @@ export const RouteList = () => {
       <Route path="/cart" element={<CartPage />}></Route>
       <Route path="/productscategory" element={<CategoryPage />}></Route>
       <Route path="/product/:id" element={<ProductsPage />}></Route>
-      <Route path="/wishlist" element={<WishlistPage />}></Route>
+      <Route path="/wishlist" element={<Private Item={WishlistPage} />}></Route>
       <Route path="*" element={<NotFound />}></Route>
     </Routes>
   );

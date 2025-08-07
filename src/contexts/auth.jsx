@@ -94,6 +94,35 @@ export const AuthProvider = ({ children }) => {
     setUser(updatedUser);
   };
 
+  const toggleWishlistItem = (productId) => {
+    const usersStorage = JSON.parse(localStorage.getItem('users_db')) || [];
+    const userToken = JSON.parse(localStorage.getItem('user_token'));
+
+    if (!userToken) return;
+
+    const updatedUsers = usersStorage.map((u) => {
+      if (u.email === userToken.email) {
+        const wishlist = u.wishlist || [];
+        const isInWishlist = wishlist.includes(productId);
+        const updatedWishlist = isInWishlist
+          ? wishlist.filter((id) => id !== productId)
+          : [...wishlist, productId];
+
+        return { ...u, wishlist: updatedWishlist };
+      }
+      return u;
+    });
+
+    localStorage.setItem('users_db', JSON.stringify(updatedUsers));
+
+    const updatedUser = updatedUsers.find((u) => u.email === userToken.email);
+    setUser(updatedUser);
+  };
+
+  const isInWishlist = (productId) => {
+    return user?.wishlist?.includes(productId);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -104,6 +133,8 @@ export const AuthProvider = ({ children }) => {
         signout,
         updateSurname,
         updateName,
+        toggleWishlistItem,
+        isInWishlist,
       }}
     >
       {children}

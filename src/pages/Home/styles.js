@@ -81,7 +81,7 @@ export const BannerImg = styled.img`
 export const BannerCategory = styled.h3`
     position: absolute;
     font-size: 1.2vw;
-    color: #00f361;
+    color: #DB4444;
     cursor: pointer;
     left: 3%;
     top: 17%;
@@ -102,7 +102,7 @@ export const BannerTitle = styled.h1`
 
 export const BannerText = styled.h2`
     position: absolute;
-    color: #00f361;
+    color: #DB4444;
     font-size: 4vw;
     text-align: center;
     bottom: 20%;

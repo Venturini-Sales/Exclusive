@@ -211,6 +211,7 @@ export const CategoryPage = () => {
                     style={{ textDecoration: 'none', color: 'inherit' }}
                   >
                     <ProductCard
+                      id={product.id}
                       title={product.title}
                       price={product.price}
                       discountPercentage={

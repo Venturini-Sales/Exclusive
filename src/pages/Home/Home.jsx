@@ -94,12 +94,12 @@ export const HomePage = () => {
                       style={{ textDecoration: 'none', color: 'inherit' }}
                     >
                       <ProductCard
+                        id={product.id}
                         title={product.title}
                         price={product.price}
-                        discountPercentage={product.discountPercentage}
+                        discountPercentage={null}
                         rating={product.rating}
                         thumbnail={product.thumbnail}
-                        margin="10px"
                       />
                     </Link>
                   </div>
@@ -186,12 +186,20 @@ export const HomePage = () => {
             onClick={() => navigate('/productscategory')}
           />
         </ButtonArea>
-        <PageSection position="relative" paddingtop="0">
-          <BannerImg src={JBLImg} alt="" />
-          <BannerCategory>Categorias</BannerCategory>
+        <PageSection
+          position="relative"
+          paddingtop="0"
+          style={{ cursor: 'pointer' }}
+          onClick={() =>
+            navigate('/product/103', { state: { hasPromo: false } })
+          }
+        >
+          <BannerImg src={JBLImg} alt="JBL Banner" />
+          <BannerCategory>Apple HomePod</BannerCategory>
           <BannerTitle>Aprimore Sua Experiência Musical</BannerTitle>
           <BannerText>Compre agora!</BannerText>
         </PageSection>
+
         <PageSection paddingtop="0">
           <SectionTitleArea>
             <SectionTitle
@@ -218,7 +226,7 @@ export const HomePage = () => {
                       style={{ textDecoration: 'none', color: 'inherit' }}
                     >
                       <ProductCard
-                        margin="25px"
+                        id={product.id}
                         title={product.title}
                         price={product.price}
                         discountPercentage={null}
