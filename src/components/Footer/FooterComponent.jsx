@@ -44,13 +44,15 @@ function FooterComponent() {
             <TitleH3>Suporte</TitleH3>
           </ListElementStyle>
           <ListElementStyle>
-            <p>1622 Hugo Rodovia - Cumaru do Norte - RJ / 93126-540</p>
+            <p style={{ userSelect: 'text' }}>
+              Rua Borba Gato 125, Bandeirantes - Nova Iguaçu - RJ / 26286-330
+            </p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>exclusive@corp.com</p>
+            <p style={{ userSelect: 'text' }}>jpventurinisales@gmail.com</p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>+55 12 9 9678-7287</p>
+            <p style={{ userSelect: 'text' }}>+55 21 9 7891-5683</p>
           </ListElementStyle>
         </ListStyle>
       </SupportSection>

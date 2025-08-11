@@ -36,6 +36,8 @@ export const ListElementStyle = styled.li`
 `
 
 export const SlideStyle = styled.div`
+    cursor: pointer;
+    
     img {
         width: 100%;
     }

@@ -6,7 +6,9 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import FlashPromoCounter from '../../components/FlashPromo/FlashPromoCounter';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
-import IMG from '../../assets/images/Frame.png';
+import Slide1 from '../../assets/images/Iphone X.png';
+import Slide2 from '../../assets/images/Cozinha.png';
+import Slide3 from '../../assets/images/Cadastro.png';
 import JBLImg from '../../assets/images/JBLbanner.png';
 import Button from '../../components/Button/Button';
 import InfoCard from '../../components/InfoCard/InfoCard';
@@ -33,7 +35,6 @@ import {
   faLaptop,
   faTablet,
   faHeadphonesSimple,
-  faClock,
   faBaseballBatBall,
   faCouch,
 } from '@fortawesome/free-solid-svg-icons';
@@ -62,11 +63,25 @@ export const HomePage = () => {
           </ListStyle>
 
           <SliderAlt>
-            {[...Array(5)].map((_, index) => (
-              <SlideStyle key={index}>
-                <img src={IMG} alt={`Slide ${index + 1}`} />
-              </SlideStyle>
-            ))}
+            <SlideStyle
+              onClick={() =>
+                navigate('/product/124', { state: { hasPromo: true } })
+              }
+            >
+              <img src={Slide1} />
+            </SlideStyle>
+            <SlideStyle
+              onClick={() =>
+                navigate('/productscategory', {
+                  state: { category: 'kitchen-accessories' },
+                })
+              }
+            >
+              <img src={Slide2} />
+            </SlideStyle>
+            <SlideStyle onClick={() => navigate('/signup')}>
+              <img src={Slide3} />
+            </SlideStyle>
           </SliderAlt>
         </PageSection>
         <PageSection paddingtop="0">
@@ -97,7 +112,7 @@ export const HomePage = () => {
                         id={product.id}
                         title={product.title}
                         price={product.price}
-                        discountPercentage={null}
+                        discountPercentage={product.discountPercentage}
                         rating={product.rating}
                         thumbnail={product.thumbnail}
                       />
