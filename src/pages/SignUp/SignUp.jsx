@@ -21,7 +21,7 @@ const theme = createTheme({
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
-  const { signup } = useAuth();
+  const { signup, quickLogin } = useAuth();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -81,6 +81,17 @@ export const SignUpPage = () => {
 
             <Button buttonText="Criar conta" />
             {error && <p style={{ color: 'red' }}>{error}</p>}
+            <p>
+              <span
+                onClick={() => {
+                  quickLogin();
+                  navigate('/');
+                }}
+              >
+                Login Rapido
+              </span>{' '}
+              para desenvolvedores
+            </p>
             <p>
               Já tem uma conta?{' '}
               <span onClick={() => navigate('/login')}>Entrar</span>

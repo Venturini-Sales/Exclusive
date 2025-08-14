@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CounterContainer, CountDisplay, ButtonCounter } from './styles';
 
-const Counter = () => {
-  const [count, setCount] = useState(1);
-
+const Counter = ({ count, setCount }) => {
   const increment = () => setCount((prev) => prev + 1);
   const decrement = () => setCount((prev) => (prev > 1 ? prev - 1 : 1));
 

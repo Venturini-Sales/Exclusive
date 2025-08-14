@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   AccountSection,
   Footer,
@@ -12,6 +13,8 @@ import {
 } from './styles';
 
 function FooterComponent() {
+  const navigate = useNavigate();
+
   return (
     <Footer>
       <NewsletterSection>
@@ -63,19 +66,19 @@ function FooterComponent() {
             <TitleH3>Conta</TitleH3>
           </ListElementStyle>
           <ListElementStyle>
-            <p>Minha conta</p>
+            <p onClick={() => navigate('/account')}>Minha conta</p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>Logar / Cadastrar</p>
+            <p onClick={() => navigate('/signup')}>Logar / Cadastrar</p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>Carrinho</p>
+            <p onClick={() => navigate('/cart')}>Carrinho</p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>Lista de desejo</p>
+            <p onClick={() => navigate('/wishlist')}>Lista de desejo</p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>Comprar</p>
+            <p onClick={() => navigate('/productscategory')}>Comprar</p>
           </ListElementStyle>
         </ListStyle>
       </AccountSection>
@@ -86,10 +89,10 @@ function FooterComponent() {
             <TitleH3>Atalho</TitleH3>
           </ListElementStyle>
           <ListElementStyle>
-            <p>Perguntas frequentes</p>
+            <p onClick={() => navigate('/contact')}>Contato</p>
           </ListElementStyle>
           <ListElementStyle>
-            <p>Contato</p>
+            <p onClick={() => navigate('/aboutus')}>Sobre</p>
           </ListElementStyle>
         </ListStyle>
       </ShortcutSection>

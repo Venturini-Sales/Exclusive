@@ -42,13 +42,33 @@ export const ProductsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, toggleWishlistItem, isInWishlist } = useAuth();
+  const { user, toggleWishlistItem, isInWishlist, addToCart } = useAuth();
 
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [count, setCount] = useState(1);
+
   const hasPromo = location.state?.hasPromo ?? false;
+
+  const handleAddToCart = () => {
+    if (!user) {
+      navigate('/signup');
+      return;
+    }
+    addToCart(
+      {
+        id: product.id,
+        title: product.title,
+        price: hasPromo
+          ? product.price * (1 - product.discountPercentage / 100)
+          : product.price,
+        thumbnail: product.thumbnail,
+      },
+      count,
+    );
+  };
 
   useEffect(() => {
     async function loadProductAndRelated() {
@@ -74,6 +94,7 @@ export const ProductsPage = () => {
         }
       }
       setLoading(false);
+      setCount(1);
     }
 
     loadProductAndRelated();
@@ -184,8 +205,8 @@ export const ProductsPage = () => {
             <ProductSynopsis>{product.description}</ProductSynopsis>
           </ProductInfoTop>
           <ProductInfoBottom>
-            <Counter />
-            <Button buttonText="Comprar" />
+            <Counter count={count} setCount={setCount} />
+            <Button buttonText="Comprar" onClick={handleAddToCart} />
             <WishButton onClick={handleWishlistClick}>
               <FontAwesomeIcon
                 icon={faHeart}
@@ -222,7 +243,6 @@ export const ProductsPage = () => {
                   hasPromo:
                     p.id >= 121 && p.id <= 128 && p.discountPercentage > 0,
                 }}
-                key={p.id}
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <ProductCard

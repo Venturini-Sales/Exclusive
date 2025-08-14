@@ -17,7 +17,6 @@ export const fetchAllProductsFiltered = async () => {
     const responses = await Promise.all(requests);
     const allProducts = responses.flatMap(res => res.data.products);
 
-    // Filtrar os produtos excluindo as categorias indesejadas
     const filteredProducts = allProducts.filter(
       product => !excludedCategories.includes(product.category)
     );

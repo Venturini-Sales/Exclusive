@@ -16,20 +16,24 @@ import useAuth from '../../hooks/useAuth';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const WishlistPage = () => {
   const { user } = useAuth();
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isHoveredLeft, setIsHoveredLeft] = useState(false);
+  const [isHoveredRight, setIsHoveredRight] = useState(false);
 
   const wishlistIds = user?.wishlist || [];
 
-  const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 20;
   const totalPages = Math.ceil(wishlistProducts.length / productsPerPage);
 
-  const [isHoveredLeft, setIsHoveredLeft] = useState(false);
-  const [isHoveredRight, setIsHoveredRight] = useState(false);
+  const isPromoProduct = (product) => {
+    return product.id >= 121 && product.id <= 128;
+  };
 
   useEffect(() => {
     const fetchWishlistProducts = async () => {
@@ -103,23 +107,37 @@ export const WishlistPage = () => {
             <p>Sua lista está vazia.</p>
           </WishIconArea>
         ) : (
-          currentProducts.map((product) => (
-            <div
-              key={product.id}
-              style={{ marginBottom: '10px', marginTop: '10px' }}
-            >
-              <ProductCard
-                id={product.id}
-                title={product.title}
-                price={product.price}
-                discountPercentage={product.discountPercentage}
-                rating={product.rating}
-                thumbnail={product.thumbnail}
-              />
-            </div>
-          ))
+          currentProducts.map((product) => {
+            const promo = isPromoProduct(product);
+            return (
+              <div
+                key={product.id}
+                style={{ marginBottom: '10px', marginTop: '10px' }}
+              >
+                <Link
+                  to={`/product/${product.id}`}
+                  state={{ hasPromo: promo }}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                  <ProductCard
+                    id={product.id}
+                    title={product.title}
+                    price={product.price}
+                    discountPercentage={
+                      promo && product.discountPercentage > 0
+                        ? product.discountPercentage
+                        : null
+                    }
+                    rating={product.rating}
+                    thumbnail={product.thumbnail}
+                  />
+                </Link>
+              </div>
+            );
+          })
         )}
       </PageSection>
+
       {!loading && totalPages > 1 && (
         <SectionsNumberArea>
           <div>
@@ -154,7 +172,7 @@ export const WishlistPage = () => {
           </div>
 
           <div>
-            <FontAwesomeIcon  
+            <FontAwesomeIcon
               onMouseEnter={() => setIsHoveredRight(true)}
               onMouseLeave={() => setIsHoveredRight(false)}
               onClick={() => goToPage(currentPage + 1)}

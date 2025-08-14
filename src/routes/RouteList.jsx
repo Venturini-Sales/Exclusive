@@ -11,6 +11,7 @@ import { PaymentPage } from '../pages/PaymentPage/PaymentPage';
 import { CartPage } from '../pages/Cart/Cart';
 import { WishlistPage } from '../pages/Wishlist/Wishlist';
 import { CategoryPage } from '../pages/CategoryArea/CategoryArea';
+import { EndPaymentPage } from '../pages/EndPayment/EndPayment';
 import useAuth from '../hooks/useAuth';
 
 const Private = ({ Item }) => {
@@ -33,8 +34,12 @@ export const RouteList = () => {
       <Route path="/aboutus" element={<AboutUsPage />}></Route>
       <Route path="/contact" element={<ContactPage />}></Route>
       <Route path="/account" element={<Private Item={Account} />}></Route>
-      <Route path="/payment" element={<PaymentPage />}></Route>
-      <Route path="/cart" element={<CartPage />}></Route>
+      <Route path="/payment" element={<Private Item={PaymentPage} />}></Route>
+      <Route
+        path="/paymentfinished"
+        element={<Private Item={EndPaymentPage} />}
+      ></Route>
+      <Route path="/cart" element={<Private Item={CartPage} />}></Route>
       <Route path="/productscategory" element={<CategoryPage />}></Route>
       <Route path="/product/:id" element={<ProductsPage />}></Route>
       <Route path="/wishlist" element={<Private Item={WishlistPage} />}></Route>

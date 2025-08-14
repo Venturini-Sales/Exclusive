@@ -11,15 +11,19 @@ export const StyledHeader = styled.header`
   justify-content: center;
   padding-top: 38px;
   padding-bottom: 10px;
-  
-  div:nth-child(1) {
-    text-align: center;
+
+`;
+
+export const ExclusiveIcon = styled.div`
+   text-align: center;
     flex: 1;
     font-size: 24px;
     font-weight: 700;
-  }
+    
+`
 
-  div:nth-child(2) {
+export const HeaderLinks = styled.div`
+    
     text-align: center;
     flex: 1;
     ul {
@@ -34,33 +38,23 @@ export const StyledHeader = styled.header`
       list-style: none;
       cursor: pointer;
     }
-  }
+`
 
-  div:nth-child(3) {
+export const UserOptionsSection = styled.div`
     flex: 1;
-  }
-`;
+`
 
-export const StyledInput = styled.div`
-  background-color: #f5f5f5;
-  color: #000000;
-  width: 242px;
-  height: 38px;
+
+export const StyledUserArea = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  margin: auto;
-  gap: 15px;
-  border-radius: 5px;
+  gap: 20px;
+`
 
-  input {
-    background-color: transparent;
-    outline: none;
-    border: none;
-  }
+export const IconArea = styled.div`
+  cursor: pointer;
 
-  svg {
-    cursor: pointer;
-  }
-`;
+`
+
+
+;

@@ -11,9 +11,12 @@ export const StyledBand = styled.div`
   align-items: center;
 
   div {
-    a {
+    span {
       margin-left: 5px;
       color: white;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
     }
   }
 `;

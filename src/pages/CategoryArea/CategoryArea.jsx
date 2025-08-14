@@ -42,12 +42,9 @@ export const CategoryPage = () => {
     let statusCode = 200;
 
     if (category === '') {
-      // Carregar todos os produtos
       ({ response, statusCode } = await fetchAllProductsFiltered());
     } else if (category === 'teste') {
-      // Produtos em promoção: buscar todos e filtrar localmente
       ({ response, statusCode } = await fetchAllProductsFiltered());
-      // Filtra produtos com id entre 121 e 128
       response = response.filter(
         (product) => product.id >= 121 && product.id <= 128,
       );
@@ -215,7 +212,7 @@ export const CategoryPage = () => {
                       title={product.title}
                       price={product.price}
                       discountPercentage={
-                        promo ? product.discountPercentage ?? 15 : null
+                        promo ? product.discountPercentage : null
                       }
                       rating={product.rating}
                       thumbnail={product.thumbnail}

@@ -8,6 +8,29 @@ export const PageStyle = styled.section`
     margin-bottom: 67px;
     overflow: hidden;
 `
+
+export const CartIconArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    p{
+        font-size: 16px;
+    }
+
+`
+
+export const CartIcon = styled.div`
+
+    img{
+        width: 300px;
+    }
+
+`
+
+
+
 export const ProductInfoContainer = styled.div`
     display: flex;
     margin: 10px 0px;

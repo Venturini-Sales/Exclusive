@@ -11,6 +11,8 @@ const SliderAlt = ({ children }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
     swipeToSlide: true,
     waitForAnimate: false,
     appendDots: (dots) => <CustomDots>{dots}</CustomDots>,

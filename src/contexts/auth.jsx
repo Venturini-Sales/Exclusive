@@ -51,6 +51,27 @@ export const AuthProvider = ({ children }) => {
     return;
   };
 
+  const quickLogin = () => {
+    const usersStorage = JSON.parse(localStorage.getItem('users_db')) || [];
+
+    const email = 'teste@teste.com';
+    const password = 'teste';
+    const name = 'teste';
+    const surname = 'teste';
+
+    let hasUser = usersStorage.find((user) => user.email === email);
+
+    if (!hasUser) {
+      hasUser = { name, surname, email, password };
+      usersStorage.push(hasUser);
+      localStorage.setItem('users_db', JSON.stringify(usersStorage));
+    }
+
+    const token = Math.random().toString(36).substring(2);
+    localStorage.setItem('user_token', JSON.stringify({ email, token }));
+    setUser(hasUser);
+  };
+
   const signout = () => {
     setUser(null);
     localStorage.removeItem('user_token');
@@ -84,6 +105,100 @@ export const AuthProvider = ({ children }) => {
     const updatedUsers = usersStorage.map((u) => {
       if (u.email === userToken.email) {
         return { ...u, surname: newSurname };
+      }
+      return u;
+    });
+
+    localStorage.setItem('users_db', JSON.stringify(updatedUsers));
+
+    const updatedUser = updatedUsers.find((u) => u.email === userToken.email);
+    setUser(updatedUser);
+  };
+
+  const addToCart = (product, quantity = 1) => {
+    const usersStorage = JSON.parse(localStorage.getItem('users_db')) || [];
+    const userToken = JSON.parse(localStorage.getItem('user_token'));
+
+    if (!userToken) return;
+
+    const updatedUsers = usersStorage.map((u) => {
+      if (u.email === userToken.email) {
+        const cart = u.cart || [];
+        const existingItem = cart.find((item) => item.id === product.id);
+
+        let updatedCart;
+        if (existingItem) {
+          updatedCart = cart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: item.quantity + quantity }
+              : item,
+          );
+        } else {
+          updatedCart = [...cart, { ...product, quantity }];
+        }
+
+        return { ...u, cart: updatedCart };
+      }
+      return u;
+    });
+
+    localStorage.setItem('users_db', JSON.stringify(updatedUsers));
+
+    const updatedUser = updatedUsers.find((u) => u.email === userToken.email);
+    setUser(updatedUser);
+  };
+
+  const removeFromCart = (productId) => {
+    const usersStorage = JSON.parse(localStorage.getItem('users_db')) || [];
+    const userToken = JSON.parse(localStorage.getItem('user_token'));
+
+    if (!userToken) return;
+
+    const updatedUsers = usersStorage.map((u) => {
+      if (u.email === userToken.email) {
+        const updatedCart = (u.cart || []).filter(
+          (item) => item.id !== productId,
+        );
+        return { ...u, cart: updatedCart };
+      }
+      return u;
+    });
+
+    localStorage.setItem('users_db', JSON.stringify(updatedUsers));
+
+    const updatedUser = updatedUsers.find((u) => u.email === userToken.email);
+    setUser(updatedUser);
+  };
+
+  const clearCart = () => {
+    const usersStorage = JSON.parse(localStorage.getItem('users_db')) || [];
+    const userToken = JSON.parse(localStorage.getItem('user_token'));
+    if (!userToken) return;
+
+    const updatedUsers = usersStorage.map((u) =>
+      u.email === userToken.email ? { ...u, cart: [] } : u,
+    );
+
+    localStorage.setItem('users_db', JSON.stringify(updatedUsers));
+
+    const updatedUser = updatedUsers.find((u) => u.email === userToken.email);
+    setUser(updatedUser);
+  };
+
+  const updateCartQuantity = (productId, quantity) => {
+    if (quantity < 1) return;
+
+    const usersStorage = JSON.parse(localStorage.getItem('users_db')) || [];
+    const userToken = JSON.parse(localStorage.getItem('user_token'));
+
+    if (!userToken) return;
+
+    const updatedUsers = usersStorage.map((u) => {
+      if (u.email === userToken.email) {
+        const updatedCart = (u.cart || []).map((item) =>
+          item.id === productId ? { ...item, quantity } : item,
+        );
+        return { ...u, cart: updatedCart };
       }
       return u;
     });
@@ -135,6 +250,11 @@ export const AuthProvider = ({ children }) => {
         updateName,
         toggleWishlistItem,
         isInWishlist,
+        quickLogin,
+        addToCart,
+        removeFromCart,
+        updateCartQuantity,
+        clearCart,
       }}
     >
       {children}
