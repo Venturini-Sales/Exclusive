@@ -40,7 +40,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import useHome from './useHome';
 
-export const HomePage = () => {
+export const HomePage = ({ handleEyeClick }) => {
   const { dataSections, loading, loadProducts, products, navigate } = useHome();
   return (
     <>
@@ -115,6 +115,7 @@ export const HomePage = () => {
                         discountPercentage={product.discountPercentage}
                         rating={product.rating}
                         thumbnail={product.thumbnail}
+                        onEyeClick={handleEyeClick}
                       />
                     </Link>
                   </div>
@@ -247,6 +248,8 @@ export const HomePage = () => {
                         discountPercentage={null}
                         rating={product.rating}
                         thumbnail={product.thumbnail}
+                        onEyeClick={handleEyeClick}
+                        margin="20px"
                       />
                     </Link>
                   </div>

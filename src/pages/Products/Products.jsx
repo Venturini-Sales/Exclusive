@@ -38,7 +38,7 @@ import {
 import { Skeleton, Box } from '@mui/material';
 import useAuth from '../../hooks/useAuth';
 
-export const ProductsPage = () => {
+export const ProductsPage = ({ handleEyeClick }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -67,6 +67,7 @@ export const ProductsPage = () => {
         thumbnail: product.thumbnail,
       },
       count,
+      navigate('/cart'),
     );
   };
 
@@ -254,6 +255,7 @@ export const ProductsPage = () => {
                   }
                   rating={p.rating}
                   thumbnail={p.thumbnail}
+                  onEyeClick={handleEyeClick}
                 />
               </Link>
             </div>

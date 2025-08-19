@@ -14,9 +14,9 @@ import { CategoryPage } from '../pages/CategoryArea/CategoryArea';
 import { EndPaymentPage } from '../pages/EndPayment/EndPayment';
 import useAuth from '../hooks/useAuth';
 
-const Private = ({ Item }) => {
+const Private = ({ Item, ...props }) => {
   const { signed } = useAuth();
-  return signed ? <Item /> : <SignUpPage />;
+  return signed ? <Item {...props} /> : <SignUpPage />;
 };
 
 const PermReverse = ({ Item }) => {
@@ -24,13 +24,19 @@ const PermReverse = ({ Item }) => {
   return signed ? <Account /> : <Item />;
 };
 
-export const RouteList = () => {
+export const RouteList = ({ handleEyeClick }) => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />}></Route>
+      <Route
+        path="/"
+        element={<HomePage handleEyeClick={handleEyeClick} />}
+      ></Route>
       <Route path="/signup" element={<PermReverse Item={SignUpPage} />}></Route>
       <Route path="/login" element={<PermReverse Item={LogInPage} />}></Route>
-      <Route path="/products" element={<ProductsPage />}></Route>
+      <Route
+        path="/products"
+        element={<ProductsPage handleEyeClick={handleEyeClick} />}
+      ></Route>
       <Route path="/aboutus" element={<AboutUsPage />}></Route>
       <Route path="/contact" element={<ContactPage />}></Route>
       <Route path="/account" element={<Private Item={Account} />}></Route>
@@ -40,9 +46,20 @@ export const RouteList = () => {
         element={<Private Item={EndPaymentPage} />}
       ></Route>
       <Route path="/cart" element={<Private Item={CartPage} />}></Route>
-      <Route path="/productscategory" element={<CategoryPage />}></Route>
-      <Route path="/product/:id" element={<ProductsPage />}></Route>
-      <Route path="/wishlist" element={<Private Item={WishlistPage} />}></Route>
+      <Route
+        path="/productscategory"
+        element={<CategoryPage handleEyeClick={handleEyeClick} />}
+      ></Route>
+      <Route
+        path="/product/:id"
+        element={<ProductsPage handleEyeClick={handleEyeClick} />}
+      ></Route>
+      <Route
+        path="/wishlist"
+        element={
+          <Private Item={WishlistPage} handleEyeClick={handleEyeClick} />
+        }
+      ></Route>
       <Route path="*" element={<NotFound />}></Route>
     </Routes>
   );

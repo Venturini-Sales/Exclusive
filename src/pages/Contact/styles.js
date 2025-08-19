@@ -102,7 +102,7 @@ export const ButtonArea = styled.div`
     grid-area: button;
 `
 
-export const FormArea = styled.div`
+export const FormArea = styled.form`
     padding: 30px;
     display: grid;
     gap: 5px;
@@ -115,3 +115,15 @@ export const FormArea = styled.div`
     box-shadow: 0px 0px 5px rgb(0,0,0,0.2);
 
 `
+
+export const HiddenLabel = styled.label`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`;

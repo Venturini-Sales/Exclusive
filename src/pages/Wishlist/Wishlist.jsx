@@ -16,10 +16,11 @@ import useAuth from '../../hooks/useAuth';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-export const WishlistPage = () => {
-  const { user } = useAuth();
+export const WishlistPage = ({ handleEyeClick }) => {
+  const { user, addToCart } = useAuth();
+  const navigate = useNavigate();
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,11 +78,22 @@ export const WishlistPage = () => {
     indexOfLastProduct,
   );
 
+  const handleAddAllToCart = () => {
+    const uniqueProducts = wishlistProducts.filter(
+      (product, index, self) =>
+        index === self.findIndex((p) => p.id === product.id),
+    );
+    uniqueProducts.forEach((product) => {
+      addToCart(product, 1);
+    });
+    navigate('/cart');
+  };
+
   return (
     <PageStyle>
       <WishlistPageHeader>
         <SectionTitle subTitleText="Lista de Desejos" />
-        <button>Colocar todos no carrinho</button>
+        <button onClick={handleAddAllToCart}>Colocar todos no carrinho</button>
       </WishlistPageHeader>
 
       <PageSection>
@@ -130,6 +142,7 @@ export const WishlistPage = () => {
                     }
                     rating={product.rating}
                     thumbnail={product.thumbnail}
+                    onEyeClick={handleEyeClick}
                   />
                 </Link>
               </div>

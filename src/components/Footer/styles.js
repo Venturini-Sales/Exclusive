@@ -14,6 +14,7 @@ export const ListElementStyle = styled.li`
   font-size: 16px;
   font-weight: 400;
   cursor: pointer;
+  
 
 `
 

@@ -33,6 +33,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 import useAuth from '../../hooks/useAuth';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { toast } from 'react-toastify';
 
 export const PaymentPage = () => {
   const { state } = useLocation();
@@ -72,33 +73,34 @@ export const PaymentPage = () => {
   const handleApplyCoupon = () => {
     if (coupon.toUpperCase() === 'FG2025') {
       if (frete === 0) {
-        alert('Cupom já aplicado!');
+        toast.info('Cupom já aplicado!');
         return;
       }
       setFrete(0);
       setTotal(subtotal);
-      alert('Cupom aplicado! Frete grátis ativado.');
+      toast.success('Cupom aplicado! Frete grátis ativado.');
     } else {
-      alert('Cupom inválido.');
+      toast.error('Cupom inválido.');
     }
   };
 
   const handleSubmit = () => {
     if (!paymentType) {
-      alert('Escolha um método de pagamento');
+      toast.warning('Escolha um método de pagamento');
       return;
     }
+
+    // valida apenas os campos obrigatórios
     for (const [key, value] of Object.entries(formData)) {
       if (!value) {
-        alert('Preencha todos os campos obrigatórios');
+        toast.warning('Preencha todos os campos obrigatórios');
         return;
       }
     }
-    if (paymentType !== 'credit') {
-      alert('Compra finalizada com sucesso!');
-      clearCart();
-      navigate('/paymentfinished');
-    }
+
+    toast.success('Compra finalizada com sucesso!');
+    clearCart();
+    navigate('/paymentfinished');
   };
 
   return (
@@ -270,7 +272,7 @@ export const PaymentPage = () => {
                     }}
                     onApprove={(data, actions) => {
                       return actions.order.capture().then((details) => {
-                        alert(
+                        toast.success(
                           `Pagamento aprovado por ${details.payer.name.given_name}`,
                         );
                         clearCart();
@@ -279,7 +281,7 @@ export const PaymentPage = () => {
                     }}
                     onError={(err) => {
                       console.error(err);
-                      alert('Ocorreu um erro no pagamento.');
+                      toast.error('Ocorreu um erro no pagamento.');
                     }}
                   />
                 </div>

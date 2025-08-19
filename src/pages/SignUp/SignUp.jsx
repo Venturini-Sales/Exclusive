@@ -79,7 +79,7 @@ export const SignUpPage = () => {
               InputLabelProps={{ required: false }}
             />
 
-            <Button buttonText="Criar conta" />
+            <Button type="submit" buttonText="Criar conta" />
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <p>
               <span

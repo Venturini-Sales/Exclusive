@@ -19,7 +19,7 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { Skeleton } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
-export const CategoryPage = () => {
+export const CategoryPage = ({ handleEyeClick }) => {
   const [isHoveredLeft, setIsHoveredLeft] = useState(false);
   const [isHoveredRight, setIsHoveredRight] = useState(false);
   const [products, setProducts] = useState([]);
@@ -216,6 +216,7 @@ export const CategoryPage = () => {
                       }
                       rating={product.rating}
                       thumbnail={product.thumbnail}
+                      onEyeClick={handleEyeClick}
                     />
                   </Link>
                 </div>

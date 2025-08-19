@@ -20,6 +20,7 @@ import {
 import Button from '../../components/Button/Button';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const Account = () => {
   const { user, signout, updateSurname, updateName } = useAuth();
@@ -55,18 +56,18 @@ export const Account = () => {
     if (currentPassword || newPassword || confirmPassword) {
       handlePasswordChange();
     } else {
-      alert('Perfil atualizado com sucesso!');
+      toast.success('Perfil atualizado com sucesso!');
     }
   };
 
   const handlePasswordChange = () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
-      alert('Preencha todos os campos de senha.');
+      toast.warning('Preencha todos os campos de senha.');
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      alert('Nova senha e confirmação não coincidem.');
+      toast.error('Nova senha e confirmação não coincidem.');
       return;
     }
 
@@ -76,7 +77,7 @@ export const Account = () => {
     );
 
     if (userIndex === -1) {
-      alert('Senha atual incorreta.');
+      toast.error('Senha atual incorreta.');
       return;
     }
 
@@ -85,7 +86,7 @@ export const Account = () => {
     setCurrentPassword('');
     setNewPassword('');
     setConfirmPassword('');
-    alert('Senha atualizada com sucesso!');
+    toast.success('Senha atualizada com sucesso!');
   };
 
   return (

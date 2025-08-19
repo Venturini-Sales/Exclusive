@@ -23,6 +23,7 @@ const ProductCard = ({
   thumbnail,
   margin,
   id,
+  onEyeClick,
 }) => {
   const promoPrice = discountPercentage
     ? price - price * (discountPercentage / 100)
@@ -53,7 +54,13 @@ const ProductCard = ({
           <StyledSaleInfo>{`${discountPercentage}%`}</StyledSaleInfo>
         )}
         <StyledCardButtons>
-          <StyledCardButton onClick={(e) => e.preventDefault()}>
+          <StyledCardButton
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (onEyeClick) onEyeClick(thumbnail);
+            }}
+          >
             <FontAwesomeIcon icon={faEye} style={{ color: '#000000' }} />
           </StyledCardButton>
           <StyledCardButton onClick={handleWishlistClick}>

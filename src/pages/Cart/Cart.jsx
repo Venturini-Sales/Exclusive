@@ -24,6 +24,7 @@ import EmptyCart from '../../assets/images/emptycart.svg';
 import Button from '../../components/Button/Button';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const CartPage = () => {
   const { user, updateCartQuantity, removeFromCart } = useAuth();
@@ -125,10 +126,10 @@ export const CartPage = () => {
                 onClick={() => {
                   if (coupon.toUpperCase() === 'FG2025') {
                     setIsFreteGratis(true);
-                    alert('Cupom aplicado! Frete grátis ativado.');
+                    toast.success('Cupom aplicado! Frete grátis ativado.');
                   } else {
                     setIsFreteGratis(false);
-                    alert('Cupom inválido.');
+                    toast.error('Cupom inválido.');
                   }
                 }}
               />

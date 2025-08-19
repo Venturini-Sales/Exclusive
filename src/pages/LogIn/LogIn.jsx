@@ -70,9 +70,16 @@ export const LogInPage = () => {
             />
 
             <ButtonFormArea>
-              <Button buttonText="Entrar" />
+              <Button type="submit" buttonText="Entrar" />
               <p>
-                <a href="">Esqueceu sua senha?</a>
+                <a
+                  href=""
+                  onClick={() => {
+                    navigate('/signup');
+                  }}
+                >
+                  Ainda não tem conta?
+                </a>
               </p>
             </ButtonFormArea>
             {error && <p style={{ color: 'red' }}>{error}</p>}
