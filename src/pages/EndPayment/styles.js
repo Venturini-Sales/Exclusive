@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
    display: flex;
@@ -14,6 +15,10 @@ export const PageSection = styled.div`
     justify-content: center;
     align-items: center;
     gap: 20px;
+
+    @media ${device.laptop}{
+        padding: 0px 20px;
+    }
 `
 
 export const EndIconArea = styled.div`
@@ -22,8 +27,12 @@ export const EndIconArea = styled.div`
     align-items: center;
     gap: 20px;
 
-    p{
+    p{  
+        text-align: center;
         font-size: 16px;
+
+
+        
     }
 
 `
@@ -32,6 +41,11 @@ export const EndIcon = styled.div`
 
     img{
         width: 300px;
+         @media ${device.mobileL}{
+            width: 200px;
+
+        }
+        
     }
 
 `

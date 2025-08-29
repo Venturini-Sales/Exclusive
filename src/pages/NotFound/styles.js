@@ -24,11 +24,12 @@ export const ErroTitle = styled.h1`
     font-size: 110px;
     font-weight: 500;
     margin-top: 50px;
-
+    text-align: center;
 `
 
 export const ErroSubTitle = styled.p`
 
     font-size: 16px;
     margin-bottom: 30px;
+    text-align: center;
 `

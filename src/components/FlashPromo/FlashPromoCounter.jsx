@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useFlashPromoCounter from './useFlashPromoCounter';
 import {
   Colon,
   CounterArea,
@@ -8,36 +9,7 @@ import {
 } from './styles';
 
 const FlashPromoCounter = () => {
-  const [timeRemaining, setTimeRemaining] = useState(0);
-
-  const calculateSecondsUntilMidnight = () => {
-    const now = new Date();
-    const midnight = new Date();
-
-    midnight.setHours(24, 0, 0, 0); // Próxima meia-noite
-
-    return Math.floor((midnight.getTime() - now.getTime()) / 1000); // segundos restantes
-  };
-
-  useEffect(() => {
-    setTimeRemaining(calculateSecondsUntilMidnight());
-
-    const timerInterval = setInterval(() => {
-      setTimeRemaining((prevTime) => {
-        if (prevTime <= 1) {
-          // Quando chegar à meia-noite, reinicia
-          return calculateSecondsUntilMidnight();
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timerInterval);
-  }, []);
-
-  const hours = Math.floor(timeRemaining / 3600);
-  const minutes = Math.floor((timeRemaining % 3600) / 60);
-  const seconds = timeRemaining % 60;
+  const { hours, minutes, seconds } = useFlashPromoCounter();
 
   return (
     <CounterArea>

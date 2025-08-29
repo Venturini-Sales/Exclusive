@@ -5,6 +5,11 @@ export const CounterArea = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
+
+    @media screen and (max-width: 1140px) {
+    margin-left: 2px;
+
+}
 `
 
 export const CounterNumberArea = styled.div`

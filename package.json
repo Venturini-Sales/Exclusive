@@ -23,6 +23,7 @@
     "@paypal/react-paypal-js": "^8.8.3",
     "@tanstack/react-query": "^5.76.1",
     "axios": "^1.7.3",
+    "motion": "^12.23.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.25.1",

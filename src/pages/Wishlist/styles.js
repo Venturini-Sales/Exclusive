@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
     display: flex;
@@ -15,11 +16,11 @@ export const PageSection = styled.div`
     gap: 20px;
     flex-direction: row;
     padding-top:  '100px';
-    width: 1150px;
+    width: 85vw;
 `
 
 export const WishlistPageHeader = styled.div`
-    width: 1145px;
+    width: 85vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -36,6 +37,10 @@ export const WishlistPageHeader = styled.div`
         border: 1px solid #999999 ;
         cursor: pointer;
         }
+    @media ${device.mobileL}{
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `
 
 export const WishIconArea = styled.div`

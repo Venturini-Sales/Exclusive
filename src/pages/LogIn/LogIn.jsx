@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
 import IMG from '../../assets/images/Phoneimage.png';
 import FormComponent from '../../components/Form/FormComponent';
 import Button from '../../components/Button/Button';
 import { ButtonFormArea, PageSection, PageStyle } from './styles';
-import TextField from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import useLogIn from './useLogin';
 
 const theme = createTheme({
   palette: {
@@ -20,27 +18,24 @@ const theme = createTheme({
 });
 
 export const LogInPage = () => {
-  const navigate = useNavigate();
-  const { signin } = useAuth();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const res = signin(email, password);
-    if (res) {
-      setError(res);
-    } else {
-      navigate('/');
-    }
-  };
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    error,
+    handleLogin,
+    goToSignUp,
+  } = useLogIn();
 
   return (
     <ThemeProvider theme={theme}>
       <PageStyle>
-        <PageSection justifycontent="flex-start" width="60%">
+        <PageSection
+          justifycontent="flex-start"
+          width="60%"
+          className="responsiveImageSettings"
+        >
           <img src={IMG} alt="" />
         </PageSection>
 
@@ -72,16 +67,12 @@ export const LogInPage = () => {
             <ButtonFormArea>
               <Button type="submit" buttonText="Entrar" />
               <p>
-                <a
-                  href=""
-                  onClick={() => {
-                    navigate('/signup');
-                  }}
-                >
+                <a href="#" onClick={goToSignUp}>
                   Ainda não tem conta?
                 </a>
               </p>
             </ButtonFormArea>
+
             {error && <p style={{ color: 'red' }}>{error}</p>}
           </FormComponent>
         </PageSection>

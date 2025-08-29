@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
 import IMG from '../../assets/images/Phoneimage.png';
 import FormComponent from '../../components/Form/FormComponent';
 import Button from '../../components/Button/Button';
 import { PageSection, PageStyle } from './styles';
-import TextField from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import useSignUp from './useSignUp';
 
 const theme = createTheme({
   palette: {
@@ -20,28 +18,27 @@ const theme = createTheme({
 });
 
 export const SignUpPage = () => {
-  const navigate = useNavigate();
-  const { signup, quickLogin } = useAuth();
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleSignup = (e) => {
-    e.preventDefault();
-    const res = signup(name, email, password);
-    if (res) {
-      setError(res);
-    } else {
-      navigate('/login');
-    }
-  };
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    error,
+    handleSignup,
+    handleQuickLogin,
+    handleGoToLogin,
+  } = useSignUp();
 
   return (
     <ThemeProvider theme={theme}>
       <PageStyle>
-        <PageSection justifycontent="flex-start" width="60%">
+        <PageSection
+          justifycontent="flex-start"
+          width="60%"
+          className="responsiveImageSettings"
+        >
           <img src={IMG} alt="" />
         </PageSection>
 
@@ -81,20 +78,13 @@ export const SignUpPage = () => {
 
             <Button type="submit" buttonText="Criar conta" />
             {error && <p style={{ color: 'red' }}>{error}</p>}
+
             <p>
-              <span
-                onClick={() => {
-                  quickLogin();
-                  navigate('/');
-                }}
-              >
-                Login Rapido
-              </span>{' '}
-              para desenvolvedores
+              <span onClick={handleQuickLogin}>Login Rapido</span> para
+              desenvolvedores
             </p>
             <p>
-              Já tem uma conta?{' '}
-              <span onClick={() => navigate('/login')}>Entrar</span>
+              Já tem uma conta? <span onClick={handleGoToLogin}>Entrar</span>
             </p>
           </FormComponent>
         </PageSection>
@@ -102,3 +92,4 @@ export const SignUpPage = () => {
     </ThemeProvider>
   );
 };
+  

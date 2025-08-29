@@ -21,7 +21,6 @@ const ProductCard = ({
   price,
   rating,
   thumbnail,
-  margin,
   id,
   onEyeClick,
 }) => {
@@ -47,7 +46,7 @@ const ProductCard = ({
   const isWishlisted = isInWishlist(id);
 
   return (
-    <StyledCard margin={margin}>
+    <StyledCard>
       <StyledCardImage>
         <img src={thumbnail} alt={title} />
         {discountPercentage && (
@@ -72,7 +71,7 @@ const ProductCard = ({
         </StyledCardButtons>
       </StyledCardImage>
       <StyledCardInfo>
-        <p>{title.length > 30 ? `${title.slice(0, 30)}...` : title}</p>
+        <p>{title.length > 20 ? `${title.slice(0, 30)}...` : title}</p>
         <StyledPriceArea>
           {promoPrice && <p>{`$${promoPrice.toFixed(2)}`}</p>}
           <p>{`$${price.toFixed(2)}`}</p>

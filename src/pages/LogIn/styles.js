@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 
 export const PageStyle = styled.section`
@@ -12,6 +13,14 @@ export const PageStyle = styled.section`
     width: 100%;
     height: 100vh;
   }
+
+  @media ${device.laptop}{
+  justify-content: center;
+  text-align: center;
+  
+  .responsiveImageSettings{
+  display: none;
+  }}
 
 `;
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
     display: flex;
@@ -11,11 +12,11 @@ export const PageSection = styled.div`
     position: ${(props) => props.position || 'static'};
     flex-wrap: wrap;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     gap: 20px;
     flex-direction: row;
     padding-top:  '100px';
-    width: 1140px;
+    width: 85vw;
     margin-bottom: 30px;
 `
 
@@ -65,23 +66,27 @@ export const CategoryOptions = styled.option`
 `
 
 export const CategoryPageHeader = styled.div`
-    width: 1145px;
+    width: 85vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     button{
-        user-select: none;
-        background-color: transparent;
-        color: black;
-        font-size: 16px;
-        font-weight: 500;
-        padding: 10px 30px;
-        border-radius: 6px;
-        border: 1px solid #999999 ;
+      user-select: none;
+      background-color: transparent;
+      color: black;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 30px;
+      border-radius: 6px;
+      border: 1px solid #999999 ;
         cursor: pointer;
         }
+    @media ${device.mobileL}{
+      flex-direction: column;
+      align-items: flex-start;
+    }
 `
 
 export const ChoiseArea = styled.div`

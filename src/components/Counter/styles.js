@@ -6,6 +6,7 @@ export const CounterContainer = styled.div`
   border: 1.5px solid #c5c5c5;
   border-radius: 6px;
   overflow: hidden;
+  
 `;
 
 export const ButtonCounter = styled.button`

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
     display: flex;
@@ -10,18 +11,14 @@ export const PageStyle = styled.section`
 `
 
 export const PageContent = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    display: flex;
+    flex-direction: column;
     padding: 2px;
-    gap: 10px;
+    gap: 50px;
 
 `
 
 export const ContentTitle = styled.div`
-    grid-column: span 5 / span 5;
-    grid-column-start: 1;
-    grid-row-start: 1;
     display: flex;
     justify-content: flex-end;
     font-size: 14px;
@@ -30,13 +27,42 @@ export const ContentTitle = styled.div`
     span {
         color: #DB4444;
     }
+
+    @media ${device.laptop}{
+    justify-content: center;
+    }
+`
+
+export const SectionsArea = styled.div`
+    display: flex;
+    gap: 50px;
+
+    @media ${device.laptop}{
+    flex-direction: column;
+    gap: 60px;
+    }
+
+    
+
 `
 
 export const ContentSections = styled.div`
-    grid-row: span 4 / span 4;
-    grid-column-start: 1;
-    grid-row-start: 2;
-    
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @media ${device.laptop}{
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 60px;
+  }
+
+
+  @media ${device.tablet}{
+  flex-direction: column;
+  align-items: center;
+
+  }
 `
 
 export const Sections = styled.div`
@@ -57,6 +83,12 @@ export const SubSections = styled.ul`
         margin-left: 20px;
         margin-bottom: 5px;
 
+        
+    @media ${device.laptop}{
+        margin: 0;
+        text-align: center;
+    }
+
         p{
             text-decoration: none;
             color: black;
@@ -70,15 +102,21 @@ export const SubSections = styled.ul`
 `
 
 export const Section = styled.div`
-    grid-column: span 4 / span 4;
-    grid-row: span 4 / span 4;
-    grid-row-start: 2;
     padding: 30px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     box-shadow: 0px 0px 5px rgb(0,0,0,0.2);
+
+    @media  (max-width: 500px) {
+    box-shadow: none;
+
+    }
+
+    @media ${device.laptop}{
+    align-items: center;
+    }
 `
 export const AccountInfoTitle = styled.h3`
     color: #DB4444;
@@ -110,7 +148,7 @@ export const StyledInput = styled.div`
   margin: auto;
   gap: 15px;
   border-radius: 5px;
-  cursor: ${(props) => props.cursortype || 'pointer'};
+  cursor: ${(props) => props.cursortype || 'text'};
   
 
   input {
@@ -118,7 +156,7 @@ export const StyledInput = styled.div`
     background-color: transparent;
     outline: none;
     border: none;
-    cursor: ${(props) => props.cursortype || 'pointer'};
+    cursor: ${(props) => props.cursortype || 'text'};
   }
 `
 
@@ -128,6 +166,11 @@ export const InputArea = styled.div`
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
     row-gap: 20px;
+
+    @media ${device.laptop}{
+    display: flex;
+    flex-direction: column;
+    }
   
 `
 
@@ -144,7 +187,12 @@ export const AccountPasswordArea = styled.div`
     margin: 20px;
 
     input {
-        width: 630px;
+        width: 55vw;
+    }
+
+    @media ${device.laptop}{
+    gap: 20px;
+    align-items: center;
     }
 
 `

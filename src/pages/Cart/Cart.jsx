@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   ContainerItensText,
   PageStyle,
@@ -19,34 +18,40 @@ import {
   PricesLabel,
   CartIconArea,
   CartIcon,
+  ResponsiveArrows,
 } from './styles';
 import EmptyCart from '../../assets/images/emptycart.svg';
 import Button from '../../components/Button/Button';
-import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import useCart from './useCart';
 
 export const CartPage = () => {
-  const { user, updateCartQuantity, removeFromCart } = useAuth();
+  const {
+    cartItems,
+    coupon,
+    setCoupon,
+    subtotal,
+    frete,
+    total,
+    applyCoupon,
+    incrementQuantity,
+    decrementQuantity,
+    changeQuantity,
+    isFreteGratis,
+  } = useCart();
+
   const navigate = useNavigate();
-
-  const [coupon, setCoupon] = useState('');
-  const [isFreteGratis, setIsFreteGratis] = useState(false);
-
-  const cartItems = user?.cart || [];
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0,
-  );
-  const frete = isFreteGratis ? 0 : cartItems.length > 0 ? 20 : 0;
-  const total = subtotal + frete;
 
   return (
     <PageStyle>
       {cartItems.length > 0 && (
         <ProductInfoContainer>
           <ContainerItensText>Produto</ContainerItensText>
-          <ContainerItensText>Preço</ContainerItensText>
+          <ContainerItensText className="subTotalResponsive">
+            Preço
+          </ContainerItensText>
           <ContainerItensText>Quantidade</ContainerItensText>
           <ContainerItensText>Subtotal</ContainerItensText>
         </ProductInfoContainer>
@@ -76,23 +81,32 @@ export const CartPage = () => {
                 </p>
               </ProductMainInfo>
 
-              <ContainerItensText>R${item.price.toFixed(2)}</ContainerItensText>
+              <ContainerItensText className="subTotalResponsive">
+                R${item.price.toFixed(2)}
+              </ContainerItensText>
 
               <ItemQuantityContainer>
+                <ResponsiveArrows>
+                  <FontAwesomeIcon
+                    icon={faArrowUp}
+                    style={{ color: '#000000', cursor: 'pointer' }}
+                    onClick={() => incrementQuantity(item.id, item.quantity)}
+                  />
+                </ResponsiveArrows>
                 <NumberInput
                   type="number"
                   value={item.quantity}
                   min="0"
                   max="99"
-                  onChange={(e) => {
-                    const newQuantity = parseInt(e.target.value, 10) || 0;
-                    if (newQuantity <= 0) {
-                      removeFromCart(item.id);
-                    } else {
-                      updateCartQuantity(item.id, newQuantity);
-                    }
-                  }}
+                  onChange={(e) => changeQuantity(item.id, e.target.value)}
                 />
+                <ResponsiveArrows>
+                  <FontAwesomeIcon
+                    icon={faArrowDown}
+                    style={{ color: '#000000', cursor: 'pointer' }}
+                    onClick={() => decrementQuantity(item.id, item.quantity)}
+                  />
+                </ResponsiveArrows>
               </ItemQuantityContainer>
 
               <ContainerItensText>
@@ -121,18 +135,7 @@ export const CartPage = () => {
                   onChange={(e) => setCoupon(e.target.value)}
                 />
               </CupomInputArea>
-              <Button
-                buttonText="Aplicar Cupom"
-                onClick={() => {
-                  if (coupon.toUpperCase() === 'FG2025') {
-                    setIsFreteGratis(true);
-                    toast.success('Cupom aplicado! Frete grátis ativado.');
-                  } else {
-                    setIsFreteGratis(false);
-                    toast.error('Cupom inválido.');
-                  }
-                }}
-              />
+              <Button buttonText="Aplicar Cupom" onClick={applyCoupon} />
             </CupomArea>
 
             <CartContainer>

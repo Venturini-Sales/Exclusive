@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
     display: flex;
@@ -7,6 +8,11 @@ export const PageStyle = styled.section`
     margin-bottom: 150px;
     gap: 100px;
     overflow: hidden;
+
+    @media screen and (max-width: 1140px) {
+    gap: 60px;
+}
+
 `
 
 export const PageSection = styled.div`
@@ -15,8 +21,15 @@ export const PageSection = styled.div`
     flex-direction:  ${(props) => props.flexdirection || 'column'};
     justify-content:  ${(props) => props.justifycontent || 'none'};
     border-top: ${(props) => props.bordertop || 'none'} ;
-    padding-top:  ${(props) => props.paddingtop || '100px'} ; ;
+    padding-top:  ${(props) => props.paddingtop || '100px'} ;
+    gap:  ${(props) => props.gap || '0'};
     width: 75vw;
+
+    @media ${device.laptop} { 
+        flex-direction:  ${(props) => props.responsiveFlexDirection || 'column'};
+        justify-content:  ${(props) => props.responsiveJustifyContent || 'none'};
+        gap:  ${(props) => props.responsiveGap || '0'};
+     }
 `
 
 export const ListStyle = styled.ul`
@@ -27,8 +40,23 @@ export const ListStyle = styled.ul`
     list-style: none;
     padding-top: 40px;
     padding-right: 20px;
-    border-right: 0.5px solid #00000050;`
+    border-right: 0.5px solid #00000050;
+    
+    @media ${device.laptop} {
+        width: auto;
+        flex-direction: row;
+        border-right: none;
+        padding-bottom: 20px;
+        padding-right: 0px;
+        margin-bottom: 50px;
+        border-bottom: 0.5px solid #00000050;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
 
+    `
+   
 export const ListElementStyle = styled.li`
     display: flex;
     align-items: center;
@@ -50,6 +78,15 @@ display: flex;
 align-items: center;
 gap: 50px;
 justify-content: ${(props) => props.justifycontent || 'none'};
+
+@media screen and (max-width: 1140px) {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+}
+
 `
 
 export const ButtonArea = styled.div`
@@ -65,6 +102,7 @@ export const AltCardArea = styled.div`
     justify-content: center;
     flex-direction: row;
     gap: 40px;
+    flex-wrap: wrap;
 `
 
 export const CardArea = styled.div `

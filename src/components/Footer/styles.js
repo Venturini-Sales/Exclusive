@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../styles/breakpoint'
 
 export const ListStyle = styled.ul`
 
@@ -41,6 +42,12 @@ export const Footer = styled.footer`
   justify-content: center;
   gap: 20px;
   padding: 45px 10px 45px 10px;
+
+   @media ${device.tablet} {
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+   }
 `;
 
 export const NewsletterSection = styled.div`
@@ -55,6 +62,12 @@ export const NewsletterSection = styled.div`
     font-size: 12.5px;
     color: white;
   }
+
+   @media ${device.tablet} {
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+   }
 `;
 
 export const SupportSection = styled.div`
@@ -62,12 +75,26 @@ export const SupportSection = styled.div`
 
   p {
    width: 90%;
+
+   @media ${device.tablet} {
+    width: auto;
+   }
   }
+
+  @media ${device.tablet} {
+    text-align: center;
+   }
+
+
 
 `;
 
 export const AccountSection = styled.div`
   flex: 1;
+
+  @media ${device.tablet} {
+  text-align: center;
+  }
 
 `;
 
@@ -75,26 +102,10 @@ export const ShortcutSection = styled.div`
   flex: 1;
   margin-right: 25px;
 
-`;
-
-export const StyledEmailInput = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: 1.5px solid #FAFAFA;
-  border-radius: 4px;
-  padding: 12px 10px 12px 16px;
-
-  input {
-    color: white;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    margin-right: 6px;
+  @media ${device.tablet} {
+  margin-right: 0px;
+  text-align: center;
+    
   }
 
-  svg {
-    cursor: pointer;
-  }
 `;

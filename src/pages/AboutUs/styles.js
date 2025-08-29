@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
     margin-top: 20px;
@@ -10,6 +11,12 @@ export const AboutContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media ${device.laptop}{
+    justify-content: center;
+    }
+
+    
 `
 
 export const AboutTitle = styled.h1`
@@ -18,33 +25,59 @@ export const AboutTitle = styled.h1`
 `
 
 export const AboutText = styled.p`
-    font-size: 16px;
-    width: 500px;
+    width: 35vw;
     margin-top: 30px;
+
+    @media ${device.desktop} { 
+    font-size: 16px;
+    }
+
+    @media ${device.desktopL} { 
+    font-size: 35px;
+    }
+
+    @media ${device.laptop}{
+    width: 80vw;
+    }
 `
 
 export const AboutArea = styled.div`
     margin-left: 168px;
 
+    @media ${device.laptop}{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    text-align: center;
+    }
+
 `
 
 export const StyledImg = styled.img`
-    width: 600px;
+    width: 45vw;
+
+    @media ${device.laptop}{
+    display: none;
+    }
 
 `
 
 export const EmployerContainer = styled.div`
     gap: 30px;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin: 60px 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-
+    flex-wrap: wrap;
 `
 
 export const StyledEmployer = styled.img`
     width: 320px;
+
+    @media ${device.mobileM}{
+    width: 300px;
+    }
 
 
 `
@@ -52,6 +85,10 @@ export const StyledEmployer = styled.img`
 export const EmployerInfo = styled.div`
     display: flex;
     flex-direction: column;
+
+    @media ${device.tablet}{
+    text-align: center;
+    }
 
 `
 
@@ -71,4 +108,5 @@ export const InfoArea = styled.div`
     display: flex;
     justify-content: center;
     gap: 35px;
+    flex-wrap: wrap;
 `

@@ -45,7 +45,12 @@ export const HomePage = ({ handleEyeClick }) => {
   return (
     <>
       <PageStyle>
-        <PageSection paddingtop="0" flexdirection="row">
+        <PageSection
+          paddingtop="0"
+          flexdirection="row"
+          responsiveFlexDirection="column"
+          responsiveJustifyContent="center"
+        >
           <ListStyle>
             {dataSections.map((item, index) => (
               <ListElementStyle
@@ -223,7 +228,7 @@ export const HomePage = ({ handleEyeClick }) => {
               subTitleText="Nossos Produtos"
             />
           </SectionTitleArea>
-          <SliderMain overflow="hidden" rowsType="2">
+          <SliderMain overflow="hidden" rowsType="1">
             {loading
               ? [...Array(16)].map((_, index) => (
                   <Skeleton
@@ -234,7 +239,7 @@ export const HomePage = ({ handleEyeClick }) => {
                     style={{ margin: '25px' }}
                   />
                 ))
-              : products.slice(8, 50).map((product) => (
+              : products.slice(8, 16).map((product) => (
                   <div key={product.id}>
                     <Link
                       to={`/product/${product.id}`}
@@ -249,7 +254,6 @@ export const HomePage = ({ handleEyeClick }) => {
                         rating={product.rating}
                         thumbnail={product.thumbnail}
                         onEyeClick={handleEyeClick}
-                        margin="20px"
                       />
                     </Link>
                   </div>
@@ -266,6 +270,8 @@ export const HomePage = ({ handleEyeClick }) => {
           paddingtop="20px"
           flexdirection="row"
           justifycontent="space-between"
+          gap="20px"
+          responsiveGap="40px"
         >
           <InfoCard
             iconType={faTruckFast}

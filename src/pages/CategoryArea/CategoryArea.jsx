@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
-import {
-  fetchAllProductsFiltered,
-  fetchProductsByCategory,
-} from '../../services/productService';
 import {
   CategoryOptions,
   CategoryPageHeader,
@@ -17,110 +13,25 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { Skeleton } from '@mui/material';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useCategoryArea from './useCategoryArea';
 
 export const CategoryPage = ({ handleEyeClick }) => {
-  const [isHoveredLeft, setIsHoveredLeft] = useState(false);
-  const [isHoveredRight, setIsHoveredRight] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const location = useLocation();
-  const initialCategory = location.state?.category || '';
-
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 20;
-
-  const handleCategoryChange = async (e) => {
-    const category = e.target.value;
-    setSelectedCategory(category);
-    setCurrentPage(1);
-    setLoading(true);
-
-    let response = [];
-    let statusCode = 200;
-
-    if (category === '') {
-      ({ response, statusCode } = await fetchAllProductsFiltered());
-    } else if (category === 'teste') {
-      ({ response, statusCode } = await fetchAllProductsFiltered());
-      response = response.filter(
-        (product) => product.id >= 121 && product.id <= 128,
-      );
-    } else {
-      ({ response, statusCode } = await fetchProductsByCategory(category));
-    }
-
-    if (statusCode === 200) {
-      setProducts(response);
-    } else {
-      setProducts([]);
-    }
-
-    setLoading(false);
-  };
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct,
-  );
-  const totalPages = Math.ceil(products.length / productsPerPage);
-
-  const goToPage = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-    }
-  };
-
-  const isPromoProduct = (product) => {
-    return product.id >= 121 && product.id <= 128;
-  };
-
-  useEffect(() => {
-    const loadProducts = async () => {
-      setLoading(true);
-
-      let response = [];
-      let statusCode = 200;
-
-      if (selectedCategory === '') {
-        ({ response, statusCode } = await fetchAllProductsFiltered());
-      } else if (selectedCategory === 'promoção') {
-        ({ response, statusCode } = await fetchAllProductsFiltered());
-        response = response.filter(
-          (product) => product.id >= 121 && product.id <= 128,
-        );
-      } else {
-        ({ response, statusCode } = await fetchProductsByCategory(
-          selectedCategory,
-        ));
-      }
-
-      if (statusCode === 200) {
-        setProducts(response);
-      } else {
-        setProducts([]);
-      }
-
-      setLoading(false);
-    };
-
-    loadProducts();
-  }, [selectedCategory]);
-
-  useEffect(() => {
-    if (products.length > 0) {
-      setLoading(true);
-      const timeout = setTimeout(() => {
-        setLoading(false);
-      }, 500);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [currentPage]);
+  const {
+    isHoveredLeft,
+    setIsHoveredLeft,
+    isHoveredRight,
+    setIsHoveredRight,
+    loading,
+    selectedCategory,
+    handleCategoryChange,
+    currentProducts,
+    totalPages,
+    currentPage,
+    goToPage,
+    isPromoProduct,
+    skeletonCount,
+  } = useCategoryArea();
 
   return (
     <PageStyle>
@@ -181,7 +92,7 @@ export const CategoryPage = ({ handleEyeClick }) => {
 
       <PageSection>
         {loading
-          ? [...Array(20)].map((_, index) => (
+          ? [...Array(skeletonCount)].map((_, index) => (
               <div
                 key={index}
                 style={{ marginBottom: '10px', marginTop: '10px' }}

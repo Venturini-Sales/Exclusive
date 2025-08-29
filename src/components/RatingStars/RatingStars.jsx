@@ -12,7 +12,10 @@ const RatingStars = ({ maxStars, rating }) => {
       <div key={i}>
         <FontAwesomeIcon
           icon={faStar}
-          style={{ color: i < starsReceived ? '#FFD43B' : '#b9b9b9' }}
+          style={{
+            color: i < starsReceived ? '#FFD43B' : '#b9b9b9',
+            fontSize: window.innerWidth < 768 ? '14px' : '14px',
+          }}
         />
       </div>,
     );

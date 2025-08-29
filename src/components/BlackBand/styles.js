@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const StyledBand = styled.div`
   background-color: black;
@@ -9,6 +10,12 @@ export const StyledBand = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
+  @media ${device.mobileL} {
+        height: auto;
+        padding: 20px 5px;
+      }
 
   div {
     span {

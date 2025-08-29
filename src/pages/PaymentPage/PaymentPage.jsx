@@ -1,5 +1,9 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaypal } from '@fortawesome/free-brands-svg-icons';
+import Button from '../../components/Button/Button';
+import IMG from '../../assets/images/PhoneImage.png';
+import usePaymentPage from './usePaymentPage';
 import {
   BillingArea,
   InputArea,
@@ -27,81 +31,25 @@ import {
   CupomInput,
   BuyButtonArea,
 } from './styles';
-import Button from '../../components/Button/Button';
-import IMG from '../../assets/images/PhoneImage.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaypal } from '@fortawesome/free-brands-svg-icons';
-import useAuth from '../../hooks/useAuth';
-import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-import { toast } from 'react-toastify';
 
 export const PaymentPage = () => {
-  const { state } = useLocation();
-  const navigate = useNavigate();
-  const { user, clearCart } = useAuth();
-
   const {
     cartItems,
     subtotal,
-    frete: initialFrete = 20,
-    total: initialTotal,
-    isFreteGratis = false,
-  } = state || {};
+    frete,
+    total,
+    paymentType,
+    setPaymentType,
+    formData,
+    handleChange,
+    coupon,
+    setCoupon,
+    handleApplyCoupon,
+    handleSubmit,
+    onApprovePaypal,
+  } = usePaymentPage();
 
-  const [paymentType, setPaymentType] = useState('');
-  const [formData, setFormData] = useState({
-    name: user ? `${user.name} ${user.surname}` : '',
-    email: user ? user.email : '',
-    address: '',
-    city: '',
-    phone: '',
-  });
-  const [coupon, setCoupon] = useState(isFreteGratis ? 'FG2025' : '');
-  const [frete, setFrete] = useState(isFreteGratis ? 0 : initialFrete);
-  const [total, setTotal] = useState(isFreteGratis ? subtotal : initialTotal);
-
-  if (!cartItems) {
-    navigate('/cart');
-    return null;
-  }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleApplyCoupon = () => {
-    if (coupon.toUpperCase() === 'FG2025') {
-      if (frete === 0) {
-        toast.info('Cupom já aplicado!');
-        return;
-      }
-      setFrete(0);
-      setTotal(subtotal);
-      toast.success('Cupom aplicado! Frete grátis ativado.');
-    } else {
-      toast.error('Cupom inválido.');
-    }
-  };
-
-  const handleSubmit = () => {
-    if (!paymentType) {
-      toast.warning('Escolha um método de pagamento');
-      return;
-    }
-
-    // valida apenas os campos obrigatórios
-    for (const [key, value] of Object.entries(formData)) {
-      if (!value) {
-        toast.warning('Preencha todos os campos obrigatórios');
-        return;
-      }
-    }
-
-    toast.success('Compra finalizada com sucesso!');
-    clearCart();
-    navigate('/paymentfinished');
-  };
+  if (!cartItems) return null;
 
   return (
     <PageStyle>
@@ -110,6 +58,10 @@ export const PaymentPage = () => {
           <PageTitle>Informações de Cobrança</PageTitle>
         </PageTitleArea>
         <BillingArea>
+          <BuyButtonArea className="responsiveButton">
+            <Button buttonText="Finalizar Compra" onClick={handleSubmit} />
+          </BuyButtonArea>
+
           <InputArea>
             <InputTotalArea>
               <p>Nome</p>
@@ -239,7 +191,6 @@ export const PaymentPage = () => {
                 />
                 <RadioLabel htmlFor="credit">Cartão de Crédito</RadioLabel>
               </RadioArea>
-
               <FontAwesomeIcon
                 size="2xl"
                 icon={faPaypal}
@@ -258,8 +209,8 @@ export const PaymentPage = () => {
                 <div style={{ marginTop: '15px', minHeight: '100px' }}>
                   <PayPalButtons
                     style={{ layout: 'vertical' }}
-                    createOrder={(data, actions) => {
-                      return actions.order.create({
+                    createOrder={(data, actions) =>
+                      actions.order.create({
                         purchase_units: [
                           {
                             amount: {
@@ -268,17 +219,11 @@ export const PaymentPage = () => {
                             },
                           },
                         ],
-                      });
-                    }}
-                    onApprove={(data, actions) => {
-                      return actions.order.capture().then((details) => {
-                        toast.success(
-                          `Pagamento aprovado por ${details.payer.name.given_name}`,
-                        );
-                        clearCart();
-                        navigate('/paymentfinished');
-                      });
-                    }}
+                      })
+                    }
+                    onApprove={(data, actions) =>
+                      actions.order.capture().then(onApprovePaypal)
+                    }
                     onError={(err) => {
                       console.error(err);
                       toast.error('Ocorreu um erro no pagamento.');

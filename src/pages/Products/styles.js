@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
     display: flex;
@@ -10,7 +11,12 @@ export const PageStyle = styled.section`
 `
 export const ProductArea = styled.div`
     display: flex;
-    width: 1100px;
+    width: 85vw;
+
+    @media ${device.laptop}{
+    flex-direction: column;
+    align-items: center;
+    }
 `
 
 export const ProductPhotoArea = styled.div`
@@ -90,7 +96,9 @@ export const ProductSynopsis = styled.div`
 export const ProductInfoBottom = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
 
 `
 
@@ -100,7 +108,7 @@ export const WishButton = styled.div`
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-    padding: 0px 15px;
+    padding: 15px 15px;
     cursor: pointer;
 
 `
@@ -138,10 +146,19 @@ export const RelatedItemsArea = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 40px;
+
+    
+
+    @media (max-width: 1100px){
+    margin-left: 15px;
+    }
+
 `
 
 export const RelatedItemsContainer = styled.div`
     display: flex;
+    justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 
 `

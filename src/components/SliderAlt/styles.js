@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const SliderContainer = styled.div`
   width: 80%;
@@ -6,6 +7,11 @@ export const SliderContainer = styled.div`
   padding-right: 0;
   padding-bottom: 0;
   position: relative;
+
+  @media ${device.laptop} { 
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 export const CustomDots = styled.ul`

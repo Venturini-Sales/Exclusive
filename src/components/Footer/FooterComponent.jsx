@@ -4,7 +4,6 @@ import {
   Footer,
   NewsletterSection,
   ShortcutSection,
-  StyledEmailInput,
   SupportSection,
   TitleH3,
   TitleNewH3,

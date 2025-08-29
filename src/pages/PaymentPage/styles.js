@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
+
 
 export const PageStyle = styled.section`
     display: flex;
@@ -16,6 +18,12 @@ export const PageContainer = styled.div`
 export const PageTitleArea = styled.div`
     display: flex;
     font-size: 14px;
+
+    @media ${device.laptop}{
+    justify-content: center;
+    }
+
+
 `
 
 export const PageTitle = styled.h1`
@@ -26,19 +34,43 @@ export const PageTitle = styled.h1`
 export const BillingArea = styled.div`
     margin-top: 50px;
     display: flex;
-    gap: 100px;
+
+    @media ${device.laptop}{
+    flex-direction: column-reverse;
+    align-items: center;
+    }
+
+    .responsiveButton{
+    display: none;
+
+    @media ${device.laptop}{
+    display: block;
+    }
+    }
 `
 
 export const InputArea = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
+    width: 35vw;
+
+    @media ${device.laptop}{
+    width: 550px;
+    }
+
+    @media ${device.tablet}{
+    width: 70vw;
+    }
+    
 `
 
 export const InputTotalArea = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 100%;
  p{
     font-size: 14px ;
  }
@@ -57,10 +89,10 @@ export const StyledInput = styled.div`
   margin: auto;
   gap: 15px;
   border-radius: 5px;
-  
+  width: 100%;
 
   input {
-    width: 300px;
+    width: 100%;
     background-color: transparent;
     outline: none;
     border: none;
@@ -83,6 +115,10 @@ export const ProductDetailArea = styled.div`
     justify-content: space-between;
     gap: 200px;
     margin-bottom: 30px;
+
+    @media ${device.mobileL}{
+    gap: 0;
+    }
 `
 
 export const ProductDetailInfo = styled.div`
@@ -175,6 +211,11 @@ export const CupomTotalArea = styled.div`
     align-items: center;
     gap: 20px;
     margin-top: 15px;
+
+    @media ${device.tablet}{
+    justify-content: center;
+    flex-wrap: wrap;
+    }
 `
 export const CupomInputArea = styled.div`
     border: 1.5px solid black;
@@ -201,5 +242,9 @@ export const CupomInput = styled.input`
 export const BuyButtonArea = styled.div`
     margin: auto;
     margin-top: 30px;
+
+    @media ${device.laptop}{
+    display: none;
+    }
 `
 ;

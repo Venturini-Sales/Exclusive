@@ -8,7 +8,7 @@ export const Card = styled.div`
     gap: 15px;
     border: 1px solid #b2b2b2;
     border-radius: 4px;
-    width: 170px;
+    width: 130px;
     height: 145px;
 
     &:hover{

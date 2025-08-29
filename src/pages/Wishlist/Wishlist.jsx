@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Skeleton } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import EmptyWishlist from '../../assets/images/emptywishlist.svg';
@@ -12,88 +14,32 @@ import {
   WishIconArea,
   WishlistPageHeader,
 } from './styles';
-import useAuth from '../../hooks/useAuth';
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useWishlist } from './useWishlist';
 
 export const WishlistPage = ({ handleEyeClick }) => {
-  const { user, addToCart } = useAuth();
   const navigate = useNavigate();
-  const [wishlistProducts, setWishlistProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isHoveredLeft, setIsHoveredLeft] = useState(false);
-  const [isHoveredRight, setIsHoveredRight] = useState(false);
-
-  const wishlistIds = user?.wishlist || [];
-
-  const productsPerPage = 20;
-  const totalPages = Math.ceil(wishlistProducts.length / productsPerPage);
-
-  const isPromoProduct = (product) => {
-    return product.id >= 121 && product.id <= 128;
-  };
-
-  useEffect(() => {
-    const fetchWishlistProducts = async () => {
-      setLoading(true);
-      try {
-        const requests = wishlistIds.map((id) =>
-          axios.get(`https://dummyjson.com/products/${id}`),
-        );
-        const responses = await Promise.all(requests);
-        const data = responses.map((res) => res.data);
-        setWishlistProducts(data);
-      } catch (err) {
-        console.error('Erro ao buscar produtos da wishlist:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (wishlistIds.length > 0) {
-      fetchWishlistProducts();
-    } else {
-      setWishlistProducts([]);
-      setLoading(false);
-    }
-  }, [wishlistIds]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [wishlistProducts.length]);
-
-  const goToPage = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-    }
-  };
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = wishlistProducts.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct,
-  );
-
-  const handleAddAllToCart = () => {
-    const uniqueProducts = wishlistProducts.filter(
-      (product, index, self) =>
-        index === self.findIndex((p) => p.id === product.id),
-    );
-    uniqueProducts.forEach((product) => {
-      addToCart(product, 1);
-    });
-    navigate('/cart');
-  };
+  const {
+    wishlistProducts,
+    loading,
+    currentPage,
+    totalPages,
+    isHoveredLeft,
+    setIsHoveredLeft,
+    isHoveredRight,
+    setIsHoveredRight,
+    currentProducts,
+    goToPage,
+    handleAddAllToCart,
+    isPromoProduct,
+  } = useWishlist();
 
   return (
     <PageStyle>
       <WishlistPageHeader>
         <SectionTitle subTitleText="Lista de Desejos" />
-        <button onClick={handleAddAllToCart}>Colocar todos no carrinho</button>
+        <button onClick={() => handleAddAllToCart(navigate)}>
+          Colocar todos no carrinho
+        </button>
       </WishlistPageHeader>
 
       <PageSection>

@@ -1,4 +1,6 @@
 import styled from 'styled-components'; 
+import { device } from '../../styles/breakpoint';
+
 
 
 export const SliderWrapper = styled.div`
@@ -19,11 +21,21 @@ export const SliderWrapper = styled.div`
   }  
 
   .slick-prev {
-    left: 65vw;
+    position: absolute;
+    top: -50px;
+    left: 80%;
+    transform: translateX(-50%);
+
+  
   }
 
   .slick-next {
-    right: 3vw;
+    position: absolute;
+    top: -50px;
+    left: 100%;
+    transform: translateX(-50%);
+
+    
   }
 
   .slick-list {
@@ -34,7 +46,7 @@ export const SliderWrapper = styled.div`
   }
 
   .slick-track{
-
+    box-sizing: border-box;
     display: flex;
     gap: 10px;
   }

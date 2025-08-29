@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoint';
 
 export const PageStyle = styled.section`
     display: flex;
@@ -7,6 +8,7 @@ export const PageStyle = styled.section`
     margin-top: 67px;
     margin-bottom: 67px;
     overflow: hidden;
+    padding: 0 10px; 
 `
 
 export const CartIconArea = styled.div`
@@ -17,28 +19,31 @@ export const CartIconArea = styled.div`
 
     p{
         font-size: 16px;
+        text-align: center;
     }
-
 `
 
 export const CartIcon = styled.div`
-
     img{
         width: 300px;
     }
-
 `
-
-
 
 export const ProductInfoContainer = styled.div`
     display: flex;
     margin: 10px 0px;
-    width: 1020px;
+    width: 100%;
+    max-width: 1020px;
     border-radius: 5px;
     padding: 20px 0px;
     justify-content: center;
     box-shadow: 0px 0px 3px rgb(0,0,0,0.1);
+
+
+    @media ${device.mobileL} {
+    .subTotalResponsive{
+    display: none;
+    }}
 `
 
 export const ContainerItensText = styled.p`
@@ -53,7 +58,8 @@ export const ProductsAreaContainer = styled.div`
     flex-direction: column;
     margin: 20px 0px;
     gap: 20px;
-
+    width: 100%;
+    max-width: 1020px;
 `
 
 export const ProductsInfo = styled.div`
@@ -61,12 +67,21 @@ export const ProductsInfo = styled.div`
     flex-direction: row;
     align-items: center;
     margin: 10px 0px;
-    width: 1020px;
+    width: 100%;
+    max-width: 1020px;
     border-radius: 5px;
-    padding: 20px 0px;
+    padding: 20px 10px;
     justify-content: center;
     box-shadow: 0px 0px 3px rgb(0,0,0,0.1);
 
+    @media ${device.mobileL} {
+    .subTotalResponsive{
+    display: none;
+    }}
+
+    @media ${device.tablet} {
+        gap: 10px;
+    }
 `
 
 export const ProductMainInfo = styled.div`
@@ -76,8 +91,11 @@ export const ProductMainInfo = styled.div`
     justify-content: center;
     text-align: center;
     gap: 10px;
+
     img{
-        width: 50px;
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
     }
 
     p{
@@ -86,18 +104,45 @@ export const ProductMainInfo = styled.div`
         text-align: center;
     }
 
+    @media ${device.mobileL} {
+    .subTotalResponsive{
+    display: none;
+    }}
+
+    @media ${device.tablet} {
+        gap: 0;
+        flex-direction: column;
+
+        p{
+            text-align: left;
+        }
+    }
 `
+
 export const ItemQuantityContainer = styled.div`
     display: flex;
     justify-content: center;
     text-align: center;
     flex: 1;    
 
+    @media ${device.tablet} {
+        width: 100%;
+        align-items: center;
+        gap: 8px;
+    }
+`
+export const ResponsiveArrows = styled.div`
+    display: none;
+
+    @media ${device.tablet} {
+    display: block;
+    }
+
+
 `
 
 export const ItemQuantity = styled.input`
     width: 50px;
-
 `
 
 export const NumberInput = styled.input.attrs({ type: 'number' })`
@@ -120,7 +165,7 @@ export const NumberInput = styled.input.attrs({ type: 'number' })`
   }
 
   &::-webkit-inner-spin-button {
-  padding: 15px 0; 
+    padding: 15px 0; 
   }
 
   &:focus {
@@ -129,8 +174,10 @@ export const NumberInput = styled.input.attrs({ type: 'number' })`
     box-shadow: none;
   }
 `
+
 export const UtilityButtonsArea = styled.div`
-    width: 1020px;
+    width: 100%;
+    max-width: 1020px;
     display: flex;
     justify-content: space-between;
 
@@ -146,37 +193,59 @@ export const UtilityButtonsArea = styled.div`
         cursor: pointer;
     }
 
+    @media  (max-width: 900px) {
+        flex-direction: column;
+        gap: 10px;
+
+        button {
+            width: 100%;
+        }
+    }
 `
+
 export const PaymentSegmentArea = styled.div`
-    width: 1020px;
+    width: 100%;
+    max-width: 1020px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 60px;
+    gap: 20px;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 export const CupomArea = styled.div`
     display: flex;
     gap: 20px;
     align-items: flex-start;
+
+    @media ${device.tablet} {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
 `
 
 export const CupomInputArea = styled.div`
     border: 1.5px solid black;
     border-radius: 5px;
-
 `
+
 export const CupomInput = styled.input`
     margin: 5px;
     height: 40px;
     padding: 0px 4px ;
     font-size: 15px;
     text-transform: uppercase;
-      font-family: 'Inter',Arial, Helvetica, sans-serif;
-        background-color: transparent;
-        outline: none;
-        border: none;
-        text-align: center;
+    font-family: 'Inter',Arial, Helvetica, sans-serif;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    text-align: center;
 
     &::placeholder {
         text-transform: none;
@@ -189,19 +258,21 @@ export const CartContainer = styled.div`
     border: 2px solid black;
     border-radius: 5px;
     padding: 25px 20px;
+    width: 350px;
 
+    @media (max-width: 900px) {
+        width: 100%;
+    }
 `
 
 export const CartInfo = styled.div`
     display: flex;
     flex-direction: column;
-
 `
 
 export const CartTitle = styled.div`
     font-size: 20px;
     font-weight: 500;
-
 `
 
 export const PricesLabel = styled.div`
@@ -210,6 +281,4 @@ export const PricesLabel = styled.div`
     margin-top: 15px;
     padding-bottom: 15px;
     border-bottom: ${(props) => props.borderbottom || '2px solid #999999'}
-
 `
-;

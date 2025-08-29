@@ -6,6 +6,11 @@ export const TitleArea = styled.div`
     flex-direction: column;
     gap: 10px;
     margin-bottom: 30px;
+
+    @media screen and (max-width: 1140px) {
+    margin-bottom: 10px;
+}
+
 `
 
 export const SubTitleArea = styled.div`
