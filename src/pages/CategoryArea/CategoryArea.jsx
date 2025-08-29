@@ -45,7 +45,7 @@ export const CategoryPage = ({ handleEyeClick }) => {
           <CategoryOptions value="promoção">
             Produtos em Promoção
           </CategoryOptions>
-          <CategoryOptions value="smartphones">Smartphones</CategoryOptions>
+          <CategoryOptions value="smartphones">Smartfones</CategoryOptions>
           <CategoryOptions value="tablets">Tablets</CategoryOptions>
           <CategoryOptions value="laptops">Notebooks</CategoryOptions>
           <CategoryOptions value="beauty">Produtos de Beleza</CategoryOptions>

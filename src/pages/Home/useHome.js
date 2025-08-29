@@ -30,7 +30,7 @@ const useHome = () => {
   { label: 'Decorações', category: 'home-decoration' },
   { label: 'Cuidados Pessoais', category: 'skin-care' },
   { label: 'Esportes e Atividades', category: 'sports-accessories' },
-  { label: 'Fragâncias', category: 'fragrances' },
+  { label: 'Fragrâncias', category: 'fragrances' },
   { label: 'Acessórios de Celular', category: 'mobile-accessories' },
 ];
 

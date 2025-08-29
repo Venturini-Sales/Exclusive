@@ -7,7 +7,7 @@ function BandComponent() {
   return (
     <StyledBand>
       <div>
-        Promoção de frete expresso gratís para todos os produtos - Use o Cupom
+        Promoção de frete expresso grátis para todos os produtos - Use o Cupom
         FG2025!
         <span onClick={() => navigate('/productscategory')}>Compre agora</span>
       </div>

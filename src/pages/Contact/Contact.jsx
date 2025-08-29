@@ -51,7 +51,7 @@ export const ContactPage = () => {
                 </PhoneIcon>
                 <InfoTitle>Faça uma ligação</InfoTitle>
               </InfoTitleArea>
-              <InfoText>Estamos disponiveis 24 horas por dia.</InfoText>
+              <InfoText>Estamos disponíveis 24 horas por dia.</InfoText>
               <InfoText style={{ userSelect: 'text' }}>
                 Telefone: +55 21 9 7891-5683
               </InfoText>
@@ -68,7 +68,7 @@ export const ContactPage = () => {
                 <InfoTitle>Envie um email</InfoTitle>
               </InfoTitleArea>
               <InfoText>
-                Preencha o formulario e iremos te contatar dentro de 24 horas.
+                Preencha o formulário e iremos te contatar dentro de 24 horas.
               </InfoText>
               <InfoText style={{ userSelect: 'text' }}>
                 Email: jpventurinisales@gmail.com

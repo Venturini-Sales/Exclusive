@@ -35,6 +35,7 @@ const useCategoryArea = () => {
   const goToPage = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 

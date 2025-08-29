@@ -21,7 +21,7 @@ function FooterComponent() {
         <p onClick={() => navigate('/signup')} style={{ cursor: 'pointer' }}>
           Inscreva-se
         </p>
-        <p>Frete gratís em pedidos com o Cupom FG2025!</p>
+        <p>Frete grátis em pedidos com o Cupom FG2025!</p>
       </NewsletterSection>
 
       <SupportSection>

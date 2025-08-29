@@ -80,7 +80,7 @@ export const SignUpPage = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
             <p>
-              <span onClick={handleQuickLogin}>Login Rapido</span> para
+              <span onClick={handleQuickLogin}>Login Rápido</span> para
               desenvolvedores
             </p>
             <p>
