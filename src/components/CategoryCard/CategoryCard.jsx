@@ -1,4 +1,4 @@
-import { Card, CardText } from './Styles';
+import { Card, CardText } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CategoryCard = ({ text, iconChildren, onClick }) => {
