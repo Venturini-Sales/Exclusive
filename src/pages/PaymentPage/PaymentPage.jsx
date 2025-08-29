@@ -2,7 +2,6 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 import Button from '../../components/Button/Button';
-import IMG from '../../assets/images/PhoneImage.png';
 import usePaymentPage from './usePaymentPage';
 import {
   BillingArea,
