@@ -4,7 +4,7 @@ import IMG from '../../assets/images/Phoneimage.png';
 import FormComponent from '../../components/Form/FormComponent';
 import Button from '../../components/Button/Button';
 import { ButtonFormArea, PageSection, PageStyle } from './styles';
-import useLogIn from './useLogin';
+import useLogIn from './useLogIn';
 
 const theme = createTheme({
   palette: {
