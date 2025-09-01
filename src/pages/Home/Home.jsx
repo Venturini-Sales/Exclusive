@@ -91,7 +91,7 @@ export const HomePage = ({ handleEyeClick }) => {
         </PageSection>
         <PageSection paddingtop="0">
           <SectionTitleArea>
-            <SectionTitle titleText="Vendas Relampago" subTitleText="Hoje" />
+            <SectionTitle titleText="Vendas Relâmpago" subTitleText="Hoje" />
             <FlashPromoCounter />
           </SectionTitleArea>
           <SliderMain rowsType="1">

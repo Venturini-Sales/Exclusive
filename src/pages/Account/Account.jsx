@@ -36,6 +36,7 @@ export const Account = () => {
     setConfirmPassword,
     handleLogout,
     handleSave,
+    navigate,
   } = useAccount();
 
   return (

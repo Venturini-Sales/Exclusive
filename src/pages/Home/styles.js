@@ -61,6 +61,16 @@ export const ListElementStyle = styled.li`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+
+
+    @media ${device.laptop}{
+    background-color: #DB4444;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    }
+    
 `
 
 export const SlideStyle = styled.div`

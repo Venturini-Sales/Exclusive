@@ -85,6 +85,7 @@ const useAccount = () => {
     setConfirmPassword,
     handleLogout,
     handleSave,
+    navigate,
   };
 };
 
