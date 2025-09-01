@@ -7,6 +7,7 @@ import FooterComponent from './components/Footer/FooterComponent';
 import { RouteList } from './routes/RouteList';
 import { AuthProvider } from './contexts/auth';
 import { Slide, ToastContainer } from 'react-toastify';
+import ScrollToTop from './hooks/scrollToTop';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -86,6 +87,7 @@ function App() {
         <BandComponent />
         <HeaderComponent />
         <RouteList handleEyeClick={handleEyeClick} />
+        <ScrollToTop />
         <FooterComponent />
         <ToastContainer
           position="top-right"
